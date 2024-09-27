@@ -1,0 +1,6 @@
+.home-container {
+  background-color: yellow;
+  height: 184vh;
+  display: flex;
+  flex-direction: column;
+}
