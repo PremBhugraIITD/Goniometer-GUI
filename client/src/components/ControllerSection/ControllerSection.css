@@ -39,7 +39,10 @@
 
 .button-area a:hover {
   background-color: rgb(255, 255, 0, 0.3);
-  color: black;
+}
+
+.button-area a:active {
+  background-color: rgb(125, 255, 0,0.5);
 }
 
 .input-area {
