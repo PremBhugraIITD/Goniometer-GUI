@@ -1,5 +1,6 @@
 .video-container {
-    background-image: url('../../assets/video_background.jpg');
+    /* background-image: url('../../assets/video_background.jpg'); */
+    background-color: rgb(255, 200, 225);
     height: 100%;
     width: 100%;
     display: flex;

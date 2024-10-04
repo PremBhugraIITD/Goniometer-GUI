@@ -4,7 +4,7 @@ import "./InputSection.css";
 const InputSection = () => {
   return (
     <div className="input-container">
-      <h2>Input Section</h2>
+      <h2>Goniometer Input</h2>
       <form>
         <label id="input1" for="input1">
           Input 1

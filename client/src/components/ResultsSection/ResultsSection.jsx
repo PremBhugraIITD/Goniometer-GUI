@@ -5,7 +5,7 @@ import "./ResultsSection.css";
 const ResultsSection = ({ activeResult }) => {
   return (
     <div className="results-container">
-      <h2>Results Section</h2>
+      <h2>Results</h2>
 
       {activeResult === "hysteresis" || activeResult === "sessile-drop" ? (
         <div className="results-area" id="results-type-one">
