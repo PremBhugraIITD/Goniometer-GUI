@@ -7,13 +7,13 @@ import "./App.css";
 const App = () => {
   return (
     <div className="app-container">
-      <div className="nav-content">
+      {/* <div className="nav-content">
         <Navbar />
-      </div>
+      </div> */}
       <div className="page-content">
         <Home />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
