@@ -1,25 +1,49 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import "./ControllerSection.css";
 
 const ControllerSection = ({ onSelect }) => {
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleDropdownChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+    onSelect(selectedValue);
+  };
+
   return (
     <div className="controller-container">
       <h2>Controller Choice</h2>
-      <div className="buttons">
-        <div className="btn">
-          <Link onClick={() => onSelect("hysteresis")}>Hysteresis</Link>
-          <input placeholder="Input" required />
-        </div>
-        <div className="btn">
-          <Link onClick={() => onSelect("pendant-drop")}>Pendant Drop</Link>
-          <input placeholder="Input" required />
-        </div>
-        <div className="btn">
-          <Link onClick={() => onSelect("sessile-drop")}>Sessile Drop</Link>
-          <input placeholder="Input" required />
-        </div>
+      <div className="dropdown">
+        <select
+          value={selectedOption}
+          onChange={handleDropdownChange}
+          className="dropdown-select"
+        >
+          <option value="" disabled>
+            Select an orientation
+          </option>
+          <option value="hysteresis">Hysteresis</option>
+          <option value="pendant-drop">Pendant Drop</option>
+          <option value="sessile-drop">Sessile Drop</option>
+        </select>
       </div>
+
+      {selectedOption === "pendant-drop" && (
+        <div className="input-fields">
+          <input
+            type="text"
+            placeholder="Density"
+            required
+            className="input-field"
+          />
+          <input
+            type="text"
+            placeholder="Needle Diameter"
+            required
+            className="input-field"
+          />
+        </div>
+      )}
     </div>
   );
 };

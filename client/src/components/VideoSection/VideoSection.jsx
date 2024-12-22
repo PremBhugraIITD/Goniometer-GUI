@@ -1,7 +1,9 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import axios from "axios";
 import "./VideoSection.css";
 
-const VideoSection = () => {
+const VideoSection = ({ activeResult }) => {
+  const [isProcessing, setIsProcessing] = useState(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -22,7 +24,7 @@ const VideoSection = () => {
   }, []);
 
   // Function to capture a screenshot
-  const takeScreenshot = () => {
+  const takeScreenshot = async () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
 
@@ -34,13 +36,32 @@ const VideoSection = () => {
       // Draw the video frame onto the canvas
       const context = canvas.getContext("2d");
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      // Convert canvas content to a Blob
+      canvas.toBlob(async (blob) => {
+        if (blob) {
+          try {
+            setIsProcessing(true);
 
-      // Create a downloadable image from the canvas
-      const imageUrl = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = imageUrl;
-      link.download = "screenshot.png"; // File name for the saved image
-      link.click();
+            // Create FormData and append the blob
+            const formData = new FormData();
+            formData.append("image", blob, "screenshot.png");
+
+            // First: Upload the image to the backend
+            const uploadResponse = await axios.post(
+              "http://localhost:3000/sessile-drop",
+              formData,
+              {
+                headers: { "Content-Type": "multipart/form-data" },
+              }
+            );
+            console.log(uploadResponse.data.message);
+          } catch (error) {
+            console.error("Error:", error);
+          } finally {
+            setIsProcessing(false);
+          }
+        }
+      }, "image/png");
     }
   };
 
@@ -58,10 +79,16 @@ const VideoSection = () => {
         {/* Hidden canvas used for capturing screenshots */}
         <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
 
-        {/* Button to take screenshot */}
-        <button onClick={takeScreenshot} className="screenshot-button">
-          Take Screenshot
-        </button>
+        {/* Button to take screenshot or capture video*/}
+        {activeResult === "sessile-drop" && (
+          <button
+            onClick={takeScreenshot}
+            className="screenshot-button"
+            disabled={isProcessing}
+          >
+            {isProcessing ? "Processing..." : "Capture Screenshot"}
+          </button>
+        )}
       </div>
     </div>
   );

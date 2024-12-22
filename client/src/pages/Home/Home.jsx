@@ -13,7 +13,7 @@ const Home = () => {
   };
   return (
     <div className="home-container">
-      <VideoSection />
+      <VideoSection activeResult = {activeResult}/>
       <ControllerSection onSelect={handleSelection}/>
       <ResultsSection activeResult={activeResult}/>
       <InputSection />

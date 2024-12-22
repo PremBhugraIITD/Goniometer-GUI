@@ -6,11 +6,11 @@ const InputSection = () => {
     <div className="input-container">
       <h2>Goniometer Input</h2>
       <form>
-        <label id="input1" for="input1">
+        <label id="input1" htmlFor="input1">
           Input 1
         </label>
         <input placeholder="Input 1" required />
-        <label id="input2" for="input2">
+        <label id="input2" htmlFor="input2">
           Input 2
         </label>
         <input placeholder="Input 2" required />

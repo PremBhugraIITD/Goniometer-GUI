@@ -1,0 +1,3 @@
+Left Contact Angle: 33.85 degrees
+Right Contact Angle: 36.22 degrees
+Average Contact Angle: 35.03 degrees

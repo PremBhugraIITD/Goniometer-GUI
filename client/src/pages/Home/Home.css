@@ -1,9 +1,9 @@
 .home-container {
   /* height: 276vh; */
-  height:100vh;
+  height: 100vh;
   /* display: flex; */
   /* flex-direction: column; */
-  display:grid;
+  display: grid;
   grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
+  grid-template-rows: 50% 50%;
 }

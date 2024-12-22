@@ -38,3 +38,19 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+.zoom-controls {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .zoom-controls label {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  #zoom-range {
+    width: 200px;
+  }
+  
