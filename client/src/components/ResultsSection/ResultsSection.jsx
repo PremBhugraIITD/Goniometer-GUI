@@ -1,13 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import download_icon from "../../assets/download_icon.svg";
 import "./ResultsSection.css";
 
 const ResultsSection = ({ activeResult }) => {
+  const [sessileDropOutput, setSessileDropOutput] = useState("");
+
+  useEffect(() => {
+    if (activeResult === "sessile-drop") {
+      const eventSource = new EventSource(
+        "http://localhost:3000/sessile-drop-stream"
+      );
+
+      eventSource.onmessage = (event) => {
+        setSessileDropOutput(event.data);
+      };
+
+      eventSource.onerror = () => {
+        console.error("Error connecting to SSE endpoint");
+        eventSource.close();
+      };
+
+      return () => {
+        eventSource.close();
+      };
+    }
+  }, [activeResult]);
+
   return (
     <div className="results-container">
       <h2>Results</h2>
 
-      {activeResult === "hysteresis" || activeResult === "sessile-drop" ? (
+      {activeResult === "sessile-drop" ? (
+        <div className="results-area" id="sessile-drop-analysis">
+          <p
+            dangerouslySetInnerHTML={{
+              __html: sessileDropOutput.replace(/\r\n|\n/g, "<br />"),
+            }}
+          ></p>
+        </div>
+      ) : activeResult === "hysteresis" ? (
         <div className="results-area" id="results-type-one">
           <h3>Results Ready:</h3>
           <div className="download">

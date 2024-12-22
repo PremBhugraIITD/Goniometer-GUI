@@ -1,3 +1,0 @@
-Maximum diameter of the drop (d_e): 2.7218907391839293 mm
-Diameter at the lowest end (d_s): 1.349990861291771 mm
-Surface tension of the liquid: 145.19604928033417 mN/m

@@ -8,6 +8,10 @@ from matplotlib.widgets import Slider
 # Global variables for cropping
 ref_point = []
 cropping = False
+# File path to save the data
+file_path = "Static_Contact_Angle.txt"
+with open(file_path, "w") as file:
+    file.write("Sessile Drop analysis started.")
 
 # Mouse callback function to select the cropping area
 def crop_image(event, x, y, flags, param):
@@ -43,6 +47,8 @@ def crop_image(event, x, y, flags, param):
         cropping = False
 
         if len(ref_point) != 2:
+            with open(file_path, "w") as file:
+                file.write("Invalid cropping points. Please select a valid ROI.")
             raise ValueError("Invalid cropping points. Please select a valid ROI.")
         
         # Draw the final rectangle around the region of interest
@@ -65,6 +71,8 @@ def get_cropped_image(image):
     global ref_point
     
     if image is None:
+        with open(file_path, "w") as file:
+            file.write("Input image is None. Please provide a valid image.")
         raise ValueError("Input image is None. Please provide a valid image.")
     
     clone = image.copy()
@@ -83,10 +91,13 @@ def get_cropped_image(image):
             ref_point = []  # Clear previous ROI points
             # clone = image.copy()  # Reset the clone to the original image
             print("Reset cropping selection.")
-
+            with open(file_path, "w") as file:
+                file.write("Reset cropping selection.")
         # Press 'c' to confirm the crop and break the loop
         elif key == ord("c") and len(ref_point) == 2:
             print("Cropping confirmed.")
+            with open(file_path, "w") as file:
+                file.write("Cropping confirmed.")
             break
 
         # Press 'n' to skip cropping
@@ -97,6 +108,8 @@ def get_cropped_image(image):
         # Check if the window is closed
         if cv2.getWindowProperty("Crop Image", cv2.WND_PROP_VISIBLE) < 1:
             print("Window closed.")
+            with open(file_path, "w") as file:
+                file.write("Window closed.")
             cv2.destroyAllWindows()
             return image  # Return the original image without cropping
 
@@ -112,6 +125,8 @@ def get_cropped_image(image):
         y0, y1 = min(y0, y1), max(y0, y1)
         
         if x0 == x1 or y0 == y1:
+            with open(file_path, "w") as file:
+                file.write("Cropping region must have a non-zero area.")
             raise ValueError("Cropping region must have a non-zero area.")
         
         cropped_image = image[y0:y1, x0:x1]
@@ -133,9 +148,13 @@ def read_last_thresholds(file_path='thresholds_log.txt'):
                 return lower_threshold, upper_threshold
             else:
                 print("No thresholds found in the file.")
+                with open(file_path, "w") as file:
+                    file.write("No thresholds found in the file.")
                 return None, None
     except FileNotFoundError:
         print("Thresholds log file not found.")
+        with open(file_path, "w") as file:
+            file.write("Thresholds log file not found.")
         return None, None
 
 def average_y_for_same_x(points):
@@ -149,6 +168,8 @@ def average_y_for_same_x(points):
         Numpy array of unique x-coordinates with averaged y-coordinates.
     '''
     if not points.any():
+        with open(file_path, "w") as file:
+            file.write("Input points array of points with same x-coordinate is empty.")
         raise ValueError("Input points array of points with same x-coordinate is empty.")
     
     # Dictionary to store points grouped by x-coordinates
@@ -178,6 +199,8 @@ def calculate_contact_angle(image, baseline_y):
         Average contact angle or None if calculation fails.
     '''
     if image is None or baseline_y < 0 or baseline_y >= image.shape[0]:
+        with open(file_path, "w") as file:
+            file.write("Invalid image or baseline position.")
         raise ValueError("Invalid image or baseline position.")
     
     # Convert to grayscale
@@ -194,6 +217,8 @@ def calculate_contact_angle(image, baseline_y):
     contours, _ = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
     if len(contours) == 0:
         print("No contours found!")
+        with open(file_path, "w") as file:
+            file.write("No contours found!")
         return None
 
     # Assume the largest contour is the drop (adjust to detect full contour)
@@ -207,6 +232,8 @@ def calculate_contact_angle(image, baseline_y):
 
     if len(above_baseline_points) < 3:
         print("Not enough points found above the baseline for contact angle calculation.")
+        with open(file_path, "w") as file:
+            file.write("Not enough points found above the baseline for contact angle calculation.")
         return None
 
     # Sort points by x-coordinate
@@ -216,6 +243,8 @@ def calculate_contact_angle(image, baseline_y):
     intersection_points = sorted_points[np.isclose(sorted_points[:, 1], baseline_y, atol=1.0)]
     if len(intersection_points) < 2:
         print("Could not find sufficient intersection points with the baseline.")
+        with open(file_path, "w") as file:
+            file.write("Could not find sufficient intersection points with the baseline.")
         return None
 
     left_intersection = intersection_points[0]
@@ -274,9 +303,6 @@ def calculate_contact_angle(image, baseline_y):
         f"Average Contact Angle: {avg_contact_angle:.2f} degrees\n"
     )
 
-    # File path to save the data
-    file_path = "Static_Contact_Angle.txt"
-
     # Write the data to a text file
     with open(file_path, "w") as file:
         file.write(text_content)
@@ -295,7 +321,7 @@ def calculate_contact_angle(image, baseline_y):
     
     plt.title(f'Contact Angle: {avg_contact_angle:.2f} degrees')
     plt.legend()
-    plt.savefig("Contact_Angle_Plot.png")
+    # plt.savefig("Contact_Angle_Plot.png")
     plt.show()
 
     return avg_contact_angle
@@ -312,6 +338,8 @@ def select_baseline(image):
         Selected baseline y-coordinate.
     '''
     if image is None:
+        with open(file_path, "w") as file:
+            file.write("Input image is None. Please provide a valid image.")
         raise ValueError("Input image is None. Please provide a valid image.")
     
     fig, ax = plt.subplots()
@@ -351,6 +379,8 @@ def process_image(image):
         image: Input image of the droplet.
     '''
     if image is None:
+        with open(file_path, "w") as file:
+            file.write("Input image is None. Please provide a valid image.")
         raise ValueError("Input image is None. Please provide a valid image.")
     global cropped_image
     # Get the cropped image from the user
@@ -360,6 +390,8 @@ def process_image(image):
     if np.array_equal(cropped_image, image):
         # User chose not to crop, proceed with original image
         print("No cropping done. Using the original image.")
+        with open(file_path, "w") as file:
+            file.write("No cropping done. Using the original image.")
     
     # Select baseline using slider
     baseline_y = select_baseline(cropped_image)
@@ -369,6 +401,8 @@ def process_image(image):
     
     if avg_contact_angle is None:
         print("Contact angle calculation failed.")
+        with open(file_path, "w") as file:
+            file.write("Contact angle calculation failed.")
 
 # # Load the image
 # # image_path = r"C:\Users\91982\Downloads\no annotation 2.png" 
@@ -378,8 +412,8 @@ def process_image(image):
 # image_path = r"C:\Users\91982\Downloads\img18.jpg"
 # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-12-20 025005.png"
 # # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-08-07 230147.png"
-# image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
-image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenshot.png"
+image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenshot.png"
 # image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\temporary2.jpg"
 image = cv2.imread(image_path)
 

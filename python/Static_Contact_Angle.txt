@@ -1,3 +1,1 @@
-Left Contact Angle: 22.41 degrees
-Right Contact Angle: 21.49 degrees
-Average Contact Angle: 21.95 degrees
+Cropping region must have a non-zero area.

@@ -45,8 +45,7 @@ const VideoSection = ({ activeResult }) => {
             // Create FormData and append the blob
             const formData = new FormData();
             formData.append("image", blob, "screenshot.png");
-
-            // First: Upload the image to the backend
+            console.log("Running Sessile Drop");
             const uploadResponse = await axios.post(
               "http://localhost:3000/sessile-drop",
               formData,
@@ -54,6 +53,7 @@ const VideoSection = ({ activeResult }) => {
                 headers: { "Content-Type": "multipart/form-data" },
               }
             );
+            console.log("Sessile Drop exited");
             console.log(uploadResponse.data.message);
           } catch (error) {
             console.error("Error:", error);
