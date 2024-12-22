@@ -50,31 +50,31 @@ app.post("/sessile-drop", upload.single("image"), (req, res) => {
     }
 
     console.log("Python script completed successfully");
+    res.json({ message: "Execution Completed" });
   });
-  res.json({ message: "Execution Completed" });
 });
 
 app.get("/sessile-drop-stream", (req, res) => {
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
-  
-    const interval = setInterval(() => {
-      fs.readFile("Static_Contact_Angle.txt", "utf8", (err, data) => {
-        if (err) {
-          console.error("Error reading file:", err);
-          res.write("data: Error reading file\n\n");
-          clearInterval(interval);
-          return;
-        }
-        res.write(`data: ${JSON.stringify(data)}\n\n`);
-      });
-    }, 1000);
-  
-    req.on("close", () => {
-      clearInterval(interval);
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+
+  const interval = setInterval(() => {
+    fs.readFile("Static_Contact_Angle.txt", "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading file:", err);
+        res.write("data: Error reading file\n\n");
+        clearInterval(interval);
+        return;
+      }
+      res.write(`data: ${JSON.stringify(data)}\n\n`);
     });
+  }, 1000);
+
+  req.on("close", () => {
+    clearInterval(interval);
   });
+});
 
 app.post("/pendant-drop", (req, res) => {
   console.log("Pendant Drop entered");
@@ -86,6 +86,13 @@ app.post("/hysteresis", (req, res) => {
   console.log("Hysteresis entered");
 
   res.json({ message: "Execution Completed" });
+});
+
+app.use((err, req, res, next) => {
+  console.log("Error Occurred");
+  fs.writeFile("Static_Contact_Angle.txt", data, (err) => {
+    console.log("Error Occurred");
+  });
 });
 
 app.listen(PORT, () => {

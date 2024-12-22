@@ -12,7 +12,7 @@ const ResultsSection = ({ activeResult }) => {
       );
 
       eventSource.onmessage = (event) => {
-        setSessileDropOutput(event.data);
+        setSessileDropOutput(event.data.replace(/^"|"$/g, ""));
       };
 
       eventSource.onerror = () => {
@@ -32,11 +32,12 @@ const ResultsSection = ({ activeResult }) => {
 
       {activeResult === "sessile-drop" ? (
         <div className="results-area" id="sessile-drop-analysis">
-          <p
-            dangerouslySetInnerHTML={{
-              __html: sessileDropOutput.replace(/\r\n|\n/g, "<br />"),
-            }}
-          ></p>
+          {console.log(sessileDropOutput.split(/\\r\\n/))}
+          {sessileDropOutput.split(/\\r\\n/).map((line, index) => {
+            return (
+                <p key={index}>{line}</p>
+            );
+          })}
         </div>
       ) : activeResult === "hysteresis" ? (
         <div className="results-area" id="results-type-one">

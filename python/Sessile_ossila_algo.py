@@ -412,8 +412,8 @@ def process_image(image):
 # image_path = r"C:\Users\91982\Downloads\img18.jpg"
 # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-12-20 025005.png"
 # # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-08-07 230147.png"
-image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
-# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenshot.png"
+# image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
+image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenshot.png"
 # image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\temporary2.jpg"
 image = cv2.imread(image_path)
 
