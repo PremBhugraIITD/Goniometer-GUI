@@ -253,6 +253,7 @@ def main(image_path):
     with open(file_path, "w") as file:
         file.write(text_content)
 
-image_path = r"C:\Users\91982\Downloads\pdlab3.jpg"
+# image_path = r"C:\Users\91982\Downloads\pdlab3.jpg"
+image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
 main(image_path)
 

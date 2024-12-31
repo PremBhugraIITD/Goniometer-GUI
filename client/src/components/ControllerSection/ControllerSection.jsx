@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import "./ControllerSection.css";
 
-const ControllerSection = ({ onSelect }) => {
+const ControllerSection = ({ onSelect, onDensityAndDiameterSubmit }) => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [density, setDensity] = useState("");
+  const [needleDiameter, setNeedleDiameter] = useState("");
+
+  const handleSubmit = () => {
+    if (onDensityAndDiameterSubmit) {
+      onDensityAndDiameterSubmit(density, needleDiameter);
+    }
+  };
 
   const handleDropdownChange = (event) => {
     const selectedValue = event.target.value;
@@ -33,15 +41,22 @@ const ControllerSection = ({ onSelect }) => {
           <input
             type="text"
             placeholder="Density"
+            value={density}
+            onChange={(e) => setDensity(e.target.value)}
             required
             className="input-field"
           />
           <input
             type="text"
             placeholder="Needle Diameter"
+            value={needleDiameter}
+            onChange={(e) => setNeedleDiameter(e.target.value)}
             required
             className="input-field"
           />
+          <button onClick={handleSubmit} className="submit-button">
+            Submit
+          </button>
         </div>
       )}
     </div>

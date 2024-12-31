@@ -1,1 +1,6 @@
-Contact angle calculation failed.
+Sessile Drop analysis started...
+No cropping done. Using the original image.
+Thresholds log file not found.
+Left Contact Angle: 142.44 degrees
+Right Contact Angle: 248.94 degrees
+Average Contact Angle: 195.69 degrees

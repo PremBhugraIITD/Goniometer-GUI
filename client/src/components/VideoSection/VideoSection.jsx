@@ -1,8 +1,9 @@
 import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import "./VideoSection.css";
+import fs from "fs";
 
-const VideoSection = ({ activeResult }) => {
+const VideoSection = ({ activeResult ,density ,needleDiameter}) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -53,16 +54,32 @@ const VideoSection = ({ activeResult }) => {
             // Create FormData and append the blob
             const formData = new FormData();
             formData.append("image", blob, "screenshot.png");
-            console.log("Running Sessile Drop");
-            const uploadResponse = await axios.post(
-              "http://localhost:3000/sessile-drop",
-              formData,
-              {
-                headers: { "Content-Type": "multipart/form-data" },
-              }
-            );
-            console.log("Sessile Drop exited");
-            console.log(uploadResponse.data.message);
+
+            if (activeResult === "sessile-drop") {
+              console.log("Running Sessile Drop");
+              const uploadResponse = await axios.post(
+                "http://localhost:3000/sessile-drop",
+                formData,
+                {
+                  headers: { "Content-Type": "multipart/form-data" },
+                }
+              );
+              console.log("Sessile Drop exited");
+            } else if (activeResult === "pendant-drop") {
+              // Add density and needle diameter inputs
+              formData.append("density", density);
+              formData.append("needleDiameter", needleDiameter);
+
+              console.log("Running Pendant Drop");
+              const uploadResponse = await axios.post(
+                "http://localhost:3000/pendant-drop",
+                formData,
+                {
+                  headers: { "Content-Type": "multipart/form-data" },
+                }
+              );
+              console.log("Pendant Drop exited");
+            }
           } catch (error) {
             console.error("Error:", error);
           } finally {
@@ -75,37 +92,55 @@ const VideoSection = ({ activeResult }) => {
 
   return (
     <div className="video-container">
-      <div className="video-area">
-        {/* Live camera feed */}
-        <video
-          ref={videoRef}
-          autoPlay
-          className="video-feed"
-        ></video>
+      {/* <div className="video-area"> */}
+      {/* Live camera feed */}
+      <video ref={videoRef} autoPlay className="video-feed"></video>
 
-        {/* Hidden canvas used for capturing screenshots */}
-        <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
+      {/* Hidden canvas used for capturing screenshots */}
+      <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
 
-        {/* Buttons for user actions */}
-        <div className="button-group">
-          {activeResult === "sessile-drop" && (
-            <button
-              onClick={takeScreenshot}
-              className="screenshot-button"
-              disabled={isProcessing}
-            >
-              {isProcessing ? "Processing..." : "Capture Screenshot"}
-            </button>
-          )}
+      {/* Buttons for user actions */}
+      <div className="button-group">
+        {/* Conditional rendering for buttons based on activeResult */}
+        {activeResult === "sessile-drop" && (
           <button
-            onClick={startScrcpy}
-            className="start-scrcpy-button"
+            onClick={takeScreenshot}
+            className="screenshot-button"
+            disabled={isProcessing}
           >
-            Advanced Tools
+            {isProcessing ? "Processing..." : "Capture Screenshot"}
           </button>
-        </div>
+        )}
+        {activeResult === "pendant-drop" && (
+          <button
+            onClick={takeScreenshot}
+            className="screenshot-button"
+            disabled={isProcessing}
+          >
+            {isProcessing ? "Processing..." : "Capture Screenshot"}
+          </button>
+        )}
+        {activeResult === "hysteresis" && (
+          <button
+            onClick={() => {
+              console.log("Capture video functionality coming soon!");
+            }}
+            className="capture-video-button"
+          >
+            Capture Video
+          </button>
+        )}
+
+        <button
+          onClick={startScrcpy}
+          className="screenshot-button"
+          disabled={!activeResult}
+        >
+          Advanced Tools
+        </button>
       </div>
     </div>
+    // </div>
   );
 };
 

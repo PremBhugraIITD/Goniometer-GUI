@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import { spawn,exec } from "child_process";
+import { spawn, exec } from "child_process";
 import fs from "fs";
 import cors from "cors";
 
@@ -32,25 +32,82 @@ app.post("/sessile-drop", upload.single("image"), (req, res) => {
       return res.status(500).json({ message: "Failed to save image." });
     }
     console.log("Image uploaded successfully");
-  });
-  const pythonProcess = spawn("C://Python312//python.exe", [
-    "Sessile_ossila_algo.py",
-  ]);
-  pythonProcess.on("error", (error) => {
-    console.error("Error starting Python script:", error);
-    return res.status(500).json({ output: "Error running Python script." });
-  });
+    const pythonProcess = spawn("C://Python312//python.exe", [
+      "Sessile_ossila_algo.py",
+    ]);
+    pythonProcess.on("error", (error) => {
+      console.error("Error starting Python script:", error);
+      return res.status(500).json({ output: "Error running Python script." });
+    });
 
-  pythonProcess.on("close", (code) => {
-    if (code !== 0) {
-      console.error(`Python script exited with code ${code}`);
-      return res
-        .status(500)
-        .json({ output: `Python script failed with code ${code}.` });
+    pythonProcess.on("close", (code) => {
+      if (code !== 0) {
+        console.error(`Python script exited with code ${code}`);
+        return res
+          .status(500)
+          .json({ output: `Python script failed with code ${code}.` });
+      }
+
+      console.log("Python script completed successfully");
+      res.json({ message: "Execution Completed" });
+    });
+  });
+});
+
+app.post("/pendant-drop", upload.single("image"), (req, res) => {
+  console.log("Pendant Drop entered");
+
+  const tempPath = req.file.path;
+  const targetPath =
+    "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/screenshot.png";
+
+  const density = req.body.density;
+  const needleDiameter = req.body.needleDiameter;
+
+  if (!density || !needleDiameter) {
+    console.error("Density or needle diameter is missing");
+    return res.status(400).json({ message: "Missing required inputs." });
+  }
+
+  // Step 1: Save the screenshot
+  fs.rename(tempPath, targetPath, (err) => {
+    if (err) {
+      console.error("Error saving image:", err);
+      return res.status(500).json({ message: "Failed to save image." });
     }
+    console.log("Image uploaded successfully");
 
-    console.log("Python script completed successfully");
-    res.json({ message: "Execution Completed" });
+    // Step 2: Write density and needle diameter to input_pendant.txt
+    const inputContent = `${density}\n${needleDiameter}`;
+    fs.writeFile("input_pendant.txt", inputContent, (err) => {
+      if (err) {
+        console.error("Error writing input file:", err);
+        return res.status(500).json({ message: "Failed to write input file." });
+      }
+      console.log("Input file created successfully");
+
+      // Step 3: Execute the Python script
+      const pythonProcess = spawn("C://Python312//python.exe", [
+        "pendant_ST.py",
+      ]);
+
+      pythonProcess.on("error", (error) => {
+        console.error("Error starting Python script:", error);
+        return res.status(500).json({ output: "Error running Python script." });
+      });
+
+      pythonProcess.on("close", (code) => {
+        if (code !== 0) {
+          console.error(`Python script exited with code ${code}`);
+          return res
+            .status(500)
+            .json({ output: `Python script failed with code ${code}.` });
+        }
+
+        console.log("Python script completed successfully");
+        res.json({ message: "Execution Completed" });
+      });
+    });
   });
 });
 
@@ -76,10 +133,39 @@ app.get("/sessile-drop-stream", (req, res) => {
   });
 });
 
+app.get("/pendant-drop-stream", (req, res) => {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+
+  const interval = setInterval(() => {
+    fs.readFile("Surface_Tension.txt", "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading file:", err);
+        res.write("data: Error reading file\n\n");
+        clearInterval(interval);
+        return;
+      }
+      res.write(`data: ${JSON.stringify(data)}\n\n`);
+    });
+  }, 1000);
+
+  req.on("close", () => {
+    clearInterval(interval);
+  });
+});
+
 app.post("/run-scrcpy", (req, res) => {
-  exec("scrcpy -e", (error, stdout, stderr) => {
+  exec("scrcpy -d", (error, stdout, stderr) => {
     if (error) {
       console.error(`Error executing scrcpy: ${error}`);
+      fs.writeFile(
+        "Static_Contact_Angle.txt",
+        "Connection to phone not established",
+        (err) => {
+          console.log("Error Occurred");
+        }
+      );
       return res.status(500).send("Error running scrcpy");
     }
     console.log(`stdout: ${stdout}`);
@@ -104,7 +190,7 @@ app.post("/hysteresis", (req, res) => {
 
 app.use((err, req, res, next) => {
   console.log("Error Occurred");
-  fs.writeFile("Static_Contact_Angle.txt", data, (err) => {
+  fs.writeFile("Static_Contact_Angle.txt", `Error: ${err}`, (err) => {
     console.log("Error Occurred");
   });
 });

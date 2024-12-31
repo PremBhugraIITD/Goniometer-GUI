@@ -1,4 +1,6 @@
 .results-container {
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -10,6 +12,7 @@
 
 .results-container h2 {
   margin: 0;
+  padding: 0;
   font-family: "Arial", sans-serif;
   text-align: center;
   margin-top: 2%;
@@ -19,18 +22,25 @@
   border-bottom: 2px solid black;
 }
 
-.results-container .results-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5%;
+.results-container .results-scroll {
   width: 90%;
+  height: 60%;
+  display:flex;
+  justify-content: center;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }
 
-.results-container .results-area h3 {
-  font-size: 3vw;
-  font-family: "Arial", sans-serif;
-  width: 52%;
+.results-container .results-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.results-container .results-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .results-container .results-area .download {
@@ -39,7 +49,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-    align-items: center;
+  align-items: center;
 }
 
 .results-container .results-area .download img {
@@ -54,8 +64,8 @@
 .results-container .results-area .download p {
   margin: 0;
   width: 100%;
-    text-align: center;
-    font-size: 1vw;
+  text-align: center;
+  font-size: 1vw;
 }
 
 .results-container .results-area .download img:hover {
@@ -66,28 +76,28 @@
   background-color: rgb(255, 255, 0, 0.5);
 }
 
-#results-type-two{
-    display:flex;
-    flex-direction:column;
+#results-type-two {
+  display: flex;
+  flex-direction: column;
 }
 
-#results-type-two h3{
-    margin-top: 0;
+#results-type-two h3 {
+  margin-top: 0;
 }
 
-#results-type-two .output{
-    width:30%;
-    height:50%;
-    margin-top: -5%;
+#results-type-two .output {
+  width: 30%;
+  height: 50%;
+  margin-top: -5%;
 }
 
-.results-area{
-    display: flex;
-    flex-direction: column;
-    column-gap:10px;
+.results-area {
+  display: flex;
+  flex-direction: column;
+  column-gap: 10px;
 }
 
-.results-area p{
-    margin: 1%;
-    padding: 0;
+.results-area p {
+  margin: 1%;
+  padding: 0;
 }
