@@ -1,18 +1,26 @@
 # Import necessary libraries
 import cv2
+import os
 import numpy as np
 import csv
 import scipy
 import warnings
+from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
 from collections import defaultdict
-warnings.filterwarnings("ignore", category=np.RankWarning)
+# from ADB_extractor import video_retrieval_from_phone
+# warnings.filterwarnings("ignore", category=np.RankWarning)
 
 # Global variables for cropping
 ref_point = []
 cropping = False
 vertical_lines = [None, None]
+
+# File path to save the data
+file_path = "Contact_Angle_Hysteresis.txt"
+with open(file_path, "w") as file:
+    file.write("Hysteresis Analysis started...\n")
 
 # Mouse callback function to select the cropping area
 def crop_image(event, x, y, flags, param):
@@ -41,6 +49,10 @@ def crop_image(event, x, y, flags, param):
             top_left = (min(ref_point[0][0], current_point[0]), min(ref_point[0][1], current_point[1]))
             bottom_right = (max(ref_point[0][0], current_point[0]), max(ref_point[0][1], current_point[1]))
             cv2.rectangle(clone, top_left, bottom_right, (0, 0, 255), 2)  # Draw the rectangle in red
+            # Resize the window (width, height)
+            cv2.resizeWindow("Crop Image", 960, 540)
+            # Move the window (x, y position on screen)
+            cv2.moveWindow("Crop Image", 0 , 0)
             cv2.imshow("Crop Image", clone)
 
     elif event == cv2.EVENT_LBUTTONUP:
@@ -48,13 +60,39 @@ def crop_image(event, x, y, flags, param):
         cropping = False
 
         if len(ref_point) != 2:
+            with open(file_path, 'a') as file:
+                file.write("Invalid cropping points. Please select a valid ROI.\n")
             raise ValueError("Invalid cropping points. Please select a valid ROI.")
         
         # Draw the final rectangle around the region of interest
         top_left = (min(ref_point[0][0], x), min(ref_point[0][1], y))
         bottom_right = (max(ref_point[0][0], x), max(ref_point[0][1], y))
         cv2.rectangle(param, top_left, bottom_right, (0, 0, 255), 2)  # Draw the rectangle in red
+        # Resize the window (width, height)
+        cv2.resizeWindow("Crop Image", 960, 540)
+        # Move the window (x, y position on screen)
+        cv2.moveWindow("Crop Image", 0 , 0)
         cv2.imshow("Crop Image", param)
+
+# Function to resize the image to fit within the screen
+def resize_to_fit_screen(image, screen_width=1920, screen_height=1080):
+    """
+    Resizes the image to fit within the screen dimensions while maintaining the aspect ratio.
+
+    Args:
+        image: The input image to resize.
+        screen_width: Maximum width of the screen.
+        screen_height: Maximum height of the screen.
+
+    Returns:
+        Resized image and the scale factor.
+    """
+    h, w = image.shape[:2]
+    scale = min(screen_width / w, screen_height / h)
+    if scale < 1:  # Resize only if the image is larger than the screen
+        resized_image = cv2.resize(image, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
+        return resized_image, scale
+    return image, 1.0  # Return the original image if no resizing is needed
 
 # Function to allow the user to crop the image
 def get_cropped_image(image):
@@ -70,12 +108,21 @@ def get_cropped_image(image):
     global ref_point
     
     if image is None:
+        with open(file_path, 'a') as file:
+            file.write("Input image is None. Please provide a valid image.\n")
         raise ValueError("Input image is None. Please provide a valid image.")
     
-    clone = image.copy()
+    # Resize the image to fit the screen
+    resized_image, scale = resize_to_fit_screen(image)
+
+    clone = resized_image.copy()
 
     # Set up the window and set the mouse callback function for cropping
     cv2.namedWindow("Crop Image")
+    # Resize the window (width, height)
+    cv2.resizeWindow("Crop Image", 960, 540)
+    # Move the window (x, y position on screen)
+    cv2.moveWindow("Crop Image", 0 , 0)
     cv2.setMouseCallback("Crop Image", crop_image, param=clone)
 
     # Display the image and wait for cropping
@@ -88,46 +135,54 @@ def get_cropped_image(image):
             ref_point = []  # Clear previous ROI points
             # clone = image.copy()  # Reset the clone to the original image
             print("Reset cropping selection.")
+            with open(file_path, 'a') as file:
+                file.write("Reset cropping selection.\n")
 
         # Press 'c' to confirm the crop and break the loop
         elif key == ord("c") and len(ref_point) == 2:
             print("Cropping confirmed.")
+            with open(file_path, 'a') as file:
+                file.write("Cropping confirmed.\n")
             break
 
         # Press 'n' to skip cropping
         elif key == ord("n"):
             cv2.destroyAllWindows()  # Close the window
-            return image  # Return the original image without cropping
+            return image,scale  # Return the original image without cropping
 
         # Check if the window is closed
         if cv2.getWindowProperty("Crop Image", cv2.WND_PROP_VISIBLE) < 1:
             print("Window closed.")
+            with open(file_path, 'a') as file:
+                file.write("Window closed.\n")
             cv2.destroyAllWindows()
-            return image  # Return the original image without cropping
+            return image,scale  # Return the original image without cropping
 
     # Close the cropping window after confirmation
     cv2.destroyAllWindows()
 
     # Crop the selected area
     if len(ref_point) == 2:
-        x0, y0 = ref_point[0]
-        x1, y1 = ref_point[1]
+        x0, y0 = int(ref_point[0][0] / scale), int(ref_point[0][1] / scale)
+        x1, y1 = int(ref_point[1][0] / scale), int(ref_point[1][1] / scale)
         # Get the coordinates in correct order
         x0, x1 = min(x0, x1), max(x0, x1)
         y0, y1 = min(y0, y1), max(y0, y1)
         
         if x0 == x1 or y0 == y1:
+            with open(file_path, 'a') as file:
+                file.write("Cropping region must have a non-zero area.\n")
             raise ValueError("Cropping region must have a non-zero area.")
         
         cropped_image = image[y0:y1, x0:x1]
-        return cropped_image
+        return cropped_image,scale
     else:
-        return image
+        return image,scale
 
-def read_last_thresholds(file_path='thresholds_log.txt'):
+def read_last_thresholds(file_path2='thresholds_log.txt'):
     """Reads the last logged thresholds from the file."""
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path2, 'r') as file:
             lines = file.readlines()
             # If the file is not empty, get the last line
             if lines:
@@ -138,9 +193,13 @@ def read_last_thresholds(file_path='thresholds_log.txt'):
                 return lower_threshold, upper_threshold
             else:
                 print("No thresholds found in the file.")
+                with open(file_path, 'a') as file:
+                    file.write("No thresholds found in the file.\n")
                 return None, None
     except FileNotFoundError:
         print("Thresholds log file not found.")
+        with open(file_path, 'a') as file:
+            file.write("Thresholds log file not found.\n")
         return None, None
 
 # Baseline selection from the first frame
@@ -155,6 +214,8 @@ def select_baseline(image):
         int: Selected baseline y-position.
     """
     if image is None:
+        with open(file_path, 'a') as file:
+            file.write("Input image is None. Please provide a valid image.\n")
         raise ValueError("Input image is None. Please provide a valid image.")
     
     fig, ax = plt.subplots()
@@ -180,6 +241,11 @@ def select_baseline(image):
         fig.canvas.draw_idle()
 
     baseline_slider.on_changed(update)
+    # Access the current figure's Tkinter window
+    canvas = plt.gcf().canvas
+    tk_window = canvas.manager.window
+    # Set the window size and position using Tkinter's geometry method
+    tk_window.geometry("960x540+0+0")
     plt.show()
 
     return int(baseline_slider.val)
@@ -193,6 +259,8 @@ def select_vertical_lines(image):
     global vertical_lines
 
     if image is None:
+        with open(file_path, 'a') as file:
+            file.write("Input image is None. Please provide a valid image.\n")
         raise ValueError("Input image is None. Please provide a valid image.")
 
     fig, ax = plt.subplots()
@@ -221,7 +289,11 @@ def select_vertical_lines(image):
 
     left_slider.on_changed(update_lines)
     right_slider.on_changed(update_lines)
-
+    # Access the current figure's Tkinter window
+    canvas = plt.gcf().canvas
+    tk_window = canvas.manager.window
+    # Set the window size and position using Tkinter's geometry method
+    tk_window.geometry("960x540+0+0")
     plt.show()
 
     vertical_lines[0] = int(left_slider.val)
@@ -240,6 +312,8 @@ def average_y_for_same_x(points):
         Numpy array of unique x-coordinates with averaged y-coordinates.
     '''
     if not points.any():
+        with open(file_path, 'a') as file:
+            file.write("Input points array of points with same x-coordinate is empty.\n")
         raise ValueError("Input points array of points with same x-coordinate is empty.")
     
     x_dict = defaultdict(list)
@@ -266,6 +340,8 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
         Average contact angle or None if calculation fails.
     '''
     if image is None or baseline_y < 0 or baseline_y >= image.shape[0]:
+        with open(file_path, 'a') as file:
+            file.write("Invalid image or baseline position.\n")
         raise ValueError("Invalid image or baseline position.")
     
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -283,6 +359,8 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
     
     if len(contours) == 0:
         print("No contours found!")
+        with open(file_path, 'a') as file:
+            file.write("No contours found!\n")
         return None
 
     contour = max(contours, key=cv2.contourArea)
@@ -291,6 +369,8 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
 
     if len(above_baseline_points) < 3:
         print("Not enough points found above the baseline.")
+        with open(file_path, 'a') as file:
+            file.write("Not enough points found above the baseline.\n")
         return None
 
     sorted_points = above_baseline_points[np.argsort(above_baseline_points[:, 0])]
@@ -298,6 +378,8 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
 
     if len(intersection_points) < 2:
         print("Could not find enough intersection points with the baseline.")
+        with open(file_path, 'a') as file:
+            file.write("Could not find enough intersection points with the baseline.\n")
         return None
 
     left_intersection = intersection_points[0]
@@ -376,20 +458,26 @@ def process_video_for_hysteresis(video_path):
     cap = cv2.VideoCapture(video_path)
 
     if not cap.isOpened():
+        with open(file_path, 'a') as file:
+            file.write("Error: Unable to open video file.\n")
         raise FileNotFoundError("Error: Unable to open video file.")
 
     ret, first_frame = cap.read()
     if not ret:
+        with open(file_path, 'a') as file:
+            file.write("Error: Could not read the first frame.\n")
         raise ValueError("Error: Could not read the first frame.")
 
-    roi = get_cropped_image(first_frame)
+    roi, scale = get_cropped_image(first_frame)
     if roi is None:
+        with open(file_path, 'a') as file:
+            file.write("Failed to select ROI.\n")
         raise ValueError("Failed to select ROI.")
     baseline = select_baseline(roi)
     vertical_lines = select_vertical_lines(roi)
     if len(ref_point) == 2:
-        x0, y0 = ref_point[0]
-        x1, y1 = ref_point[1]
+        x0, y0 = int(ref_point[0][0] / scale), int(ref_point[0][1] / scale)
+        x1, y1 = int(ref_point[1][0] / scale), int(ref_point[1][1] / scale)
         # Get the coordinates in correct order
         x0, x1 = min(x0, x1), max(x0, x1)
         y0, y1 = min(y0, y1), max(y0, y1)
@@ -409,7 +497,11 @@ def process_video_for_hysteresis(video_path):
     ax.set_xlabel("Frame Index")
     ax.set_ylabel("Contact Angle (°)")
     ax.legend()
-
+    # Access the current figure's Tkinter window
+    canvas = plt.gcf().canvas
+    tk_window = canvas.manager.window
+    # Set the window size and position using Tkinter's geometry method
+    tk_window.geometry("960x540+0+0")  # Position at (0, 0) with size 960x540
     frame_index = 0
     with open('contact_angle_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
@@ -420,6 +512,8 @@ def process_video_for_hysteresis(video_path):
 
             if not ret:
                 print("End of video stream or error in reading the video file.")
+                with open(file_path, 'a') as file:
+                    file.write("End of video stream or error in reading the video file.\n")
                 break
             else:
 
@@ -429,6 +523,8 @@ def process_video_for_hysteresis(video_path):
                 result = calculate_contact_angle(frame, baseline,vertical_lines)
                 if result is None:
                     print("The function returned None.")
+                    with open(file_path, 'a') as file:
+                        file.write("The function returned None.\n")
                 else:
                     left_ca, right_ca, contact_angle, width = result
                 if contact_angle is not None:
@@ -452,6 +548,8 @@ def process_video_for_hysteresis(video_path):
                     ax.set_ylim(min(filtered_contact_angles) - 5, max(filtered_contact_angles) + 5)
                 else:
                     print("Error: contact_angles contains only None values.")
+                    with open(file_path, 'a') as file:
+                        file.write("Error: contact_angles contains only None values.\n")
                 
                 plt.pause(0.01)
                 frame_index += 1
@@ -466,8 +564,12 @@ def process_video_for_hysteresis(video_path):
         if step[i]==min(step):
             receding_ca = contact_angles[i]
     if advancing_ca == None:
+        with open(file_path, 'a') as file:
+            file.write("Failed to calculate the advancing contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.\n")
         raise ValueError ("Failed to calculate the advancing contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.")
     if receding_ca == None:
+        with open(file_path, 'a') as file:
+            file.write("Failed to calculate the receding contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.\n")
         raise ValueError ("Failed to calculate the receding contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.")
     Contact_Angle_Hysteresis = advancing_ca-receding_ca
         
@@ -478,11 +580,8 @@ def process_video_for_hysteresis(video_path):
         f"Contact Angle Hysteresis: {Contact_Angle_Hysteresis}\n"
     )
 
-    # File path to save the data
-    file_path = "Contact_Angle_Hysteresis.txt"
-
     # Write the data to a text file
-    with open(file_path, "w") as file:
+    with open(file_path, "a") as file:
         file.write(text_content)
     
 
@@ -491,8 +590,60 @@ def process_video_for_hysteresis(video_path):
     plt.ioff()
     plt.show()
 
+def get_latest_file(directory):
+    """
+    Get the most recent file from the specified directory.
 
+    Args:
+        directory (str): Path to the directory.
+
+    Returns:
+        str: Path to the latest file, or None if no files are found.
+    """
+    try:
+        # Convert directory path to a Path object
+        path = Path(directory)
+
+        # List all files in the directory
+        files = [f for f in path.iterdir() if f.is_file()]
+
+        if not files:
+            print(f"No files found in {directory}.")
+            with open(file_path, 'a') as file:
+                file.write(f"No files found in {directory}.\n")
+            return None
+
+        # Find the most recent file based on modification time
+        latest_file = max(files, key=lambda f: f.stat().st_mtime)
+        return str(latest_file)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        with open(file_path, 'a') as file:
+            file.write(f"An error occurred: {e}\n")
+        return None
+
+def load_latest_image_path():
+    # Replace with the directory where files are stored on your PC
+    DIRECTORY = r"C:\Users\91982\OneDrive\Desktop\SURA\Retrieved_Data_Input"
+
+    latest_file = get_latest_file(DIRECTORY)
+    if latest_file:
+        return latest_file
+    else:
+        print("No file could be retrieved.")
+        with open(file_path, 'a') as file:
+            file.write("No file could be retrieved.\n")
+
+# def hysteresis():
+#     # video_retrieval_from_phone()
+#     os.chdir(r"C:\Users\91982\OneDrive\Desktop\SURA")
+#     video_path= str(load_latest_image_path())
+#     video_path = r"C:\Users\91982\Videos\hysteresis.mp4"
+#     process_video_for_hysteresis(video_path)
+
+# hysteresis()
 
 if __name__ == "__main__":
-    video_path = r"C:\Users\91982\Videos\hysteresis.mp4"  # Replace with the path to your video file
+    video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\video.mp4"  # Replace with the path to your video file
+    # video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenRecording.mp4"  # Replace with the path to your video file
     process_video_for_hysteresis(video_path)

@@ -1,12 +1,14 @@
 import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import "./VideoSection.css";
-import fs from "fs";
 
-const VideoSection = ({ activeResult ,density ,needleDiameter}) => {
+const VideoSection = ({ activeResult, density, needleDiameter }) => {
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
+  const recordedChunks = useRef([]);
 
   useEffect(() => {
     // Request access to the video stream (camera)
@@ -33,51 +35,83 @@ const VideoSection = ({ activeResult ,density ,needleDiameter}) => {
     }
   };
 
+  const startRecording = () => {
+    const stream = videoRef.current.srcObject;
+    if (stream) {
+      const mediaRecorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+      mediaRecorderRef.current = mediaRecorder;
+      recordedChunks.current = [];
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          recordedChunks.current.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = async () => {
+        const blob = new Blob(recordedChunks.current, { type: "video/webm" });
+        const formData = new FormData();
+        formData.append("video", blob, "screenRecording.webm");
+
+        try {
+          setIsProcessing(true);
+          const uploadResponse = await axios.post(
+            "http://localhost:3000/hysteresis-analysis",
+            formData,
+            {
+              headers: { "Content-Type": "multipart/form-data" },
+            }
+          );
+          console.log("Hysteresis analysis video uploaded successfully");
+        } catch (error) {
+          console.error("Error uploading video:", error);
+        } finally {
+          setIsProcessing(false);
+        }
+      };
+
+      mediaRecorder.start();
+      setIsRecording(true);
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+    }
+  };
+
   const takeScreenshot = async () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
 
     if (video && canvas) {
-      // Set canvas dimensions to match the video
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
 
-      // Draw the video frame onto the canvas
       const context = canvas.getContext("2d");
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      // Convert canvas content to a Blob
       canvas.toBlob(async (blob) => {
         if (blob) {
           try {
             setIsProcessing(true);
-
-            // Create FormData and append the blob
             const formData = new FormData();
             formData.append("image", blob, "screenshot.png");
 
             if (activeResult === "sessile-drop") {
               console.log("Running Sessile Drop");
-              const uploadResponse = await axios.post(
-                "http://localhost:3000/sessile-drop",
-                formData,
-                {
-                  headers: { "Content-Type": "multipart/form-data" },
-                }
-              );
+              await axios.post("http://localhost:3000/sessile-drop", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+              });
               console.log("Sessile Drop exited");
             } else if (activeResult === "pendant-drop") {
-              // Add density and needle diameter inputs
               formData.append("density", density);
               formData.append("needleDiameter", needleDiameter);
-
               console.log("Running Pendant Drop");
-              const uploadResponse = await axios.post(
-                "http://localhost:3000/pendant-drop",
-                formData,
-                {
-                  headers: { "Content-Type": "multipart/form-data" },
-                }
-              );
+              await axios.post("http://localhost:3000/pendant-drop", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+              });
               console.log("Pendant Drop exited");
             }
           } catch (error) {
@@ -92,16 +126,10 @@ const VideoSection = ({ activeResult ,density ,needleDiameter}) => {
 
   return (
     <div className="video-container">
-      {/* <div className="video-area"> */}
-      {/* Live camera feed */}
       <video ref={videoRef} autoPlay className="video-feed"></video>
-
-      {/* Hidden canvas used for capturing screenshots */}
       <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
 
-      {/* Buttons for user actions */}
       <div className="button-group">
-        {/* Conditional rendering for buttons based on activeResult */}
         {activeResult === "sessile-drop" && (
           <button
             onClick={takeScreenshot}
@@ -121,16 +149,26 @@ const VideoSection = ({ activeResult ,density ,needleDiameter}) => {
           </button>
         )}
         {activeResult === "hysteresis" && (
-          <button
-            onClick={() => {
-              console.log("Capture video functionality coming soon!");
-            }}
-            className="capture-video-button"
-          >
-            Capture Video
-          </button>
+          <>
+            {!isRecording ? (
+              <button
+                onClick={startRecording}
+                className="capture-video-button"
+                disabled={isProcessing}
+              >
+                Start Recording
+              </button>
+            ) : (
+              <button
+                onClick={stopRecording}
+                className="capture-video-button"
+                disabled={isProcessing}
+              >
+                Stop Recording
+              </button>
+            )}
+          </>
         )}
-
         <button
           onClick={startScrcpy}
           className="screenshot-button"
@@ -140,7 +178,6 @@ const VideoSection = ({ activeResult ,density ,needleDiameter}) => {
         </button>
       </div>
     </div>
-    // </div>
   );
 };
 

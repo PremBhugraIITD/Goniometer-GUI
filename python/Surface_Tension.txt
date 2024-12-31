@@ -1,4 +1,4 @@
 Pendant Drop analysis started...
-Cropping confirmed.
+Window closed.
 Thresholds log file not found.nNo points found at y = bottom_y - d_e level.
 No points found at y = bottom_y - d_e level

@@ -28,13 +28,13 @@
   display:flex;
   justify-content: center;
   overflow-y: auto;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none;
+  /* -ms-overflow-style: none; 
+  scrollbar-width: none; */
 }
 
-.results-container .results-scroll::-webkit-scrollbar {
+/* .results-container .results-scroll::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .results-container .results-area {
   display: flex;

@@ -1,0 +1,862 @@
+Hysteresis Analysis started...
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Not enough points found above the baseline.
+The function returned None.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+Thresholds log file not found.
+End of video stream or error in reading the video file.
+Advancing Contact Angle: 127.506465985881
+Receding Contact Angle: 166.0403779499281
+Contact Angle Hysteresis: -38.53391196404709

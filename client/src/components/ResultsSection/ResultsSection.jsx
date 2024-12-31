@@ -5,6 +5,7 @@ import "./ResultsSection.css";
 const ResultsSection = ({ activeResult }) => {
   const [sessileDropOutput, setSessileDropOutput] = useState("");
   const [pendantDropOutput, setPendantDropOutput] = useState("");
+  const [hysteresisOutput, setHysteresisOutput] = useState("");
   useEffect(() => {
     if (activeResult === "sessile-drop") {
       const eventSource = new EventSource(
@@ -37,6 +38,20 @@ const ResultsSection = ({ activeResult }) => {
       return () => {
         eventSource.close();
       };
+    } else if (activeResult === "hysteresis") {
+      const eventSource = new EventSource(
+        "http://localhost:3000/hysteresis-stream"
+      );
+      eventSource.onmessage = (event) => {
+        setHysteresisOutput(event.data.replace(/^"|"$/g, ""));
+      };
+      eventSource.onerror = () => {
+        console.error("Error connecting to SSE endpoint");
+        eventSource.close();
+      };
+      return () => {
+        eventSource.close();
+      };
     }
   }, [activeResult]);
 
@@ -52,12 +67,11 @@ const ResultsSection = ({ activeResult }) => {
             })}
           </div>
         ) : activeResult === "hysteresis" ? (
-          <div className="results-area" id="results-type-one">
-            <h3>Results Ready:</h3>
-            <div className="download">
-              <img src={download_icon} alt="Download" />
-              <p>Export CSV</p>
-            </div>
+          <div className="results-area" id="hysteresis-analysis">
+            {console.log(hysteresisOutput.split(/\\r\\n/))}
+            {hysteresisOutput.split(/\\r\\n/).map((line, index) => {
+              return <p key={index}>{line}</p>;
+            })}
           </div>
         ) : activeResult === "pendant-drop" ? (
           <div className="results-area" id="pendant-drop-analysis">
