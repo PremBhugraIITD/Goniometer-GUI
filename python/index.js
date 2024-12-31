@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import { spawn } from "child_process";
+import { spawn,exec } from "child_process";
 import fs from "fs";
 import cors from "cors";
 
@@ -73,6 +73,20 @@ app.get("/sessile-drop-stream", (req, res) => {
 
   req.on("close", () => {
     clearInterval(interval);
+  });
+});
+
+app.post("/run-scrcpy", (req, res) => {
+  exec("scrcpy -e", (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing scrcpy: ${error}`);
+      return res.status(500).send("Error running scrcpy");
+    }
+    console.log(`stdout: ${stdout}`);
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+    }
+    res.send("scrcpy started");
   });
 });
 

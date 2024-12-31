@@ -1,1 +1,1 @@
-Cropping region must have a non-zero area.
+Contact angle calculation failed.

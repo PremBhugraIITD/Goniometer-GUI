@@ -23,7 +23,15 @@ const VideoSection = ({ activeResult }) => {
     }
   }, []);
 
-  // Function to capture a screenshot
+  const startScrcpy = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/run-scrcpy");
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error starting scrcpy:", error);
+    }
+  };
+
   const takeScreenshot = async () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -72,23 +80,30 @@ const VideoSection = ({ activeResult }) => {
         <video
           ref={videoRef}
           autoPlay
-          // style={{ transform: "scaleX(-1)" }}
           className="video-feed"
         ></video>
 
         {/* Hidden canvas used for capturing screenshots */}
         <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
 
-        {/* Button to take screenshot or capture video*/}
-        {activeResult === "sessile-drop" && (
+        {/* Buttons for user actions */}
+        <div className="button-group">
+          {activeResult === "sessile-drop" && (
+            <button
+              onClick={takeScreenshot}
+              className="screenshot-button"
+              disabled={isProcessing}
+            >
+              {isProcessing ? "Processing..." : "Capture Screenshot"}
+            </button>
+          )}
           <button
-            onClick={takeScreenshot}
-            className="screenshot-button"
-            disabled={isProcessing}
+            onClick={startScrcpy}
+            className="start-scrcpy-button"
           >
-            {isProcessing ? "Processing..." : "Capture Screenshot"}
+            Advanced Tools
           </button>
-        )}
+        </div>
       </div>
     </div>
   );
