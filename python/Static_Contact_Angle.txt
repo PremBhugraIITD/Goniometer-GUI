@@ -1,1 +1,6 @@
-Error: ReferenceError: path is not defined
+Sessile Drop analysis started...
+Cropping confirmed.
+Thresholds log file not found.
+Left Contact Angle: 100.40 degrees
+Right Contact Angle: 254.33 degrees
+Average Contact Angle: 177.37 degrees

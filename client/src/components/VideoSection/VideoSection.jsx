@@ -2,7 +2,13 @@ import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import "./VideoSection.css";
 
-const VideoSection = ({ activeResult, density, needleDiameter }) => {
+const VideoSection = ({
+  activeResult,
+  density,
+  needleDiameter,
+  onProcessingChange,
+  onCSVError
+}) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const videoRef = useRef(null);
@@ -38,7 +44,9 @@ const VideoSection = ({ activeResult, density, needleDiameter }) => {
   const startRecording = () => {
     const stream = videoRef.current.srcObject;
     if (stream) {
-      const mediaRecorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+      const mediaRecorder = new MediaRecorder(stream, {
+        mimeType: "video/webm",
+      });
       mediaRecorderRef.current = mediaRecorder;
       recordedChunks.current = [];
 
@@ -55,6 +63,8 @@ const VideoSection = ({ activeResult, density, needleDiameter }) => {
 
         try {
           setIsProcessing(true);
+          onProcessingChange(true);
+          console.log("Running Hysteresis analysis");
           const uploadResponse = await axios.post(
             "http://localhost:3000/hysteresis-analysis",
             formData,
@@ -62,11 +72,15 @@ const VideoSection = ({ activeResult, density, needleDiameter }) => {
               headers: { "Content-Type": "multipart/form-data" },
             }
           );
-          console.log("Hysteresis analysis video uploaded successfully");
+          console.log("Hysteresis analysis exited");
+          onCSVError(false);
+          //   console.log(new Date().toLocaleString());
         } catch (error) {
-          console.error("Error uploading video:", error);
+            onCSVError(true);
+          console.error("Error running python script video:", error);
         } finally {
           setIsProcessing(false);
+          onProcessingChange(false);
         }
       };
 
@@ -115,7 +129,7 @@ const VideoSection = ({ activeResult, density, needleDiameter }) => {
               console.log("Pendant Drop exited");
             }
           } catch (error) {
-            console.error("Error:", error);
+            console.error("Error running python script:", error);
           } finally {
             setIsProcessing(false);
           }

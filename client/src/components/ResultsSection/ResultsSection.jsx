@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import download_icon from "../../assets/download_icon.svg";
 import "./ResultsSection.css";
 
-const ResultsSection = ({ activeResult }) => {
+const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
   const [sessileDropOutput, setSessileDropOutput] = useState("");
   const [pendantDropOutput, setPendantDropOutput] = useState("");
   const [hysteresisOutput, setHysteresisOutput] = useState("");
+
+  const downloadCSV = () => {
+    window.location.href = "http://localhost:3000/download-results";
+  };
+
   useEffect(() => {
     if (activeResult === "sessile-drop") {
       const eventSource = new EventSource(
@@ -68,10 +73,20 @@ const ResultsSection = ({ activeResult }) => {
           </div>
         ) : activeResult === "hysteresis" ? (
           <div className="results-area" id="hysteresis-analysis">
-            {console.log(hysteresisOutput.split(/\\r\\n/))}
-            {hysteresisOutput.split(/\\r\\n/).map((line, index) => {
-              return <p key={index}>{line}</p>;
-            })}
+            {isProcessing || csvError ? (
+              <div className="results-area">
+                {console.log(hysteresisOutput.split(/\\r\\n/))}
+                {hysteresisOutput.split(/\\r\\n/).map((line, index) => {
+                  return <p key={index}>{line}</p>;
+                })}
+              </div>
+            ) : (
+              <div className="results-area">
+                <button onClick={downloadCSV} className="download-button">
+                  Download CSV
+                </button>
+              </div>
+            )}
           </div>
         ) : activeResult === "pendant-drop" ? (
           <div className="results-area" id="pendant-drop-analysis">

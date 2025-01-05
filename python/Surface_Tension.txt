@@ -1,4 +1,6 @@
 Pendant Drop analysis started...
-Window closed.
-Thresholds log file not found.nNo points found at y = bottom_y - d_e level.
-No points found at y = bottom_y - d_e level
+Thresholds log file not found.nFile 'Calibration_result.txt' not found.
+Thresholds log file not found.nSurface tension calculated successfully.
+Maximum diameter of the drop (d_e): 291039.91619682976 mm
+Diameter at the lowest end (d_s): 144348.6402597636 mm
+Surface tension of the liquid: 318071520791.6743 mN/m

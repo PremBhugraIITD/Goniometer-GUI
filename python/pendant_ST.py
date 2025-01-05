@@ -607,8 +607,8 @@ def load_latest_image_path():
 # pendant_drop()
 
 # image_path = r"C:\Users\91982\Downloads\pdlab3.jpg"
-# image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
-image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenshot.png"
+image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenshot.png"
 
 
 # O_n_d=0.0010194

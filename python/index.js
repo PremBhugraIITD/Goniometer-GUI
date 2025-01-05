@@ -3,6 +3,7 @@ import multer from "multer";
 import { spawn, exec } from "child_process";
 import fs from "fs";
 import cors from "cors";
+import morgan from "morgan";
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +14,8 @@ app.use(
     methods: ["GET", "POST"],
   })
 );
+
+app.use(morgan("tiny"));
 
 // Configure multer for file uploads
 const upload = multer({
@@ -32,6 +35,8 @@ app.post("/sessile-drop", upload.single("image"), (req, res) => {
       return res.status(500).json({ message: "Failed to save image." });
     }
     console.log("Image uploaded successfully");
+    console.log("Starting the python script");
+
     const pythonProcess = spawn("C://Python312//python.exe", [
       "Sessile_ossila_algo.py",
     ]);
@@ -76,7 +81,7 @@ app.post("/pendant-drop", upload.single("image"), (req, res) => {
       return res.status(500).json({ message: "Failed to save image." });
     }
     console.log("Image uploaded successfully");
-
+    console.log("Starting the python script");
     // Step 2: Write density and needle diameter to input_pendant.txt
     const inputContent = `${density}\n${needleDiameter}`;
     fs.writeFile("input_pendant.txt", inputContent, (err) => {
@@ -125,7 +130,7 @@ app.post("/hysteresis-analysis", upload.single("video"), (req, res) => {
     }
 
     console.log("Video uploaded successfully to:", targetPath);
-
+    console.log("Starting the python script");
     // Run the Python script
     const pythonProcess = spawn("C://Python312//python.exe", [
       "hysteresis_final.py",
@@ -153,8 +158,22 @@ app.post("/hysteresis-analysis", upload.single("video"), (req, res) => {
       }
 
       console.log("Python script completed successfully");
-      res.json({ message: "Execution Completed" });
+      console.log("CSV file created successfully");
+      //   console.log(new Date().toLocaleString());
+      res.json({
+        message: "Execution Completed",
+      });
     });
+  });
+});
+
+app.get("/download-results", (req, res) => {
+  const csvFilePath = "contact_angle_data.csv";
+  res.download(csvFilePath, "results.csv", (err) => {
+    if (err) {
+      console.error("Error serving the file:", err);
+      res.status(500).send("Error serving the file.");
+    }
   });
 });
 
