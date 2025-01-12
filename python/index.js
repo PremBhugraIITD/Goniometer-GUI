@@ -177,6 +177,43 @@ app.get("/download-results", (req, res) => {
   });
 });
 
+app.post("/calibration", upload.single("image"), (req, res) => {
+  console.log("Calibration entered");
+  const tempPath = req.file.path;
+  const targetPath =
+    "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/GitHub/S.U.R.A.-2024/python/image_final.png";
+
+  // Move the file to the desired location
+  fs.rename(tempPath, targetPath, (err) => {
+    if (err) {
+      console.error("Error saving image:", err);
+      return res.status(500).json({ message: "Failed to save image." });
+    }
+    console.log("Image uploaded successfully");
+    console.log("Starting the python script");
+
+    const pythonProcess = spawn("C://Python312//python.exe", [
+      "Calibration.py",
+    ]);
+    pythonProcess.on("error", (error) => {
+      console.error("Error starting Python script:", error);
+      return res.status(500).json({ output: "Error running Python script." });
+    });
+
+    pythonProcess.on("close", (code) => {
+      if (code !== 0) {
+        console.error(`Python script exited with code ${code}`);
+        return res
+          .status(500)
+          .json({ output: `Python script failed with code ${code}.` });
+      }
+
+      console.log("Python script completed successfully");
+      res.json({ message: "Execution Completed" });
+    });
+  });
+});
+
 app.get("/sessile-drop-stream", (req, res) => {
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
@@ -243,6 +280,28 @@ app.get("/hysteresis-stream", (req, res) => {
   });
 });
 
+app.get("/calibration-stream", (req, res) => {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+
+  const interval = setInterval(() => {
+    fs.readFile("Calibration_result.txt", "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading file:", err);
+        res.write("data: Error reading file\n\n");
+        clearInterval(interval);
+        return;
+      }
+      res.write(`data: ${JSON.stringify(data)}\n\n`);
+    });
+  }, 1000);
+
+  req.on("close", () => {
+    clearInterval(interval);
+  });
+});
+
 app.post("/run-scrcpy", (req, res) => {
   exec("scrcpy -d", (error, stdout, stderr) => {
     if (error) {
@@ -253,7 +312,7 @@ app.post("/run-scrcpy", (req, res) => {
         (err) => {
           console.log("Error Occurred");
         }
-        );
+      );
       fs.writeFile(
         "Static_Contact_Angle.txt",
         "Connection to phone not established",
@@ -280,6 +339,7 @@ app.post("/run-scrcpy", (req, res) => {
 
 app.use((err, req, res, next) => {
   console.log("Error Occurred");
+  //   console.error(err.stack);
 });
 
 app.listen(PORT, () => {

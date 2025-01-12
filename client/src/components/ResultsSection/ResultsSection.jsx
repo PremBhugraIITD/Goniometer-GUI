@@ -6,6 +6,7 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
   const [sessileDropOutput, setSessileDropOutput] = useState("");
   const [pendantDropOutput, setPendantDropOutput] = useState("");
   const [hysteresisOutput, setHysteresisOutput] = useState("");
+  const [calibrationOutput, setCalibrationOutput] = useState("");
 
   const downloadCSV = () => {
     window.location.href = "http://localhost:3000/download-results";
@@ -57,6 +58,23 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
       return () => {
         eventSource.close();
       };
+    } else if (activeResult === "calibration") {
+      const eventSource = new EventSource(
+        "http://localhost:3000/calibration-stream"
+      );
+
+      eventSource.onmessage = (event) => {
+        setCalibrationOutput(event.data.replace(/^"|"$/g, ""));
+      };
+
+      eventSource.onerror = () => {
+        console.error("Error connecting to SSE endpoint");
+        eventSource.close();
+      };
+
+      return () => {
+        eventSource.close();
+      };
     }
   }, [activeResult]);
 
@@ -92,6 +110,13 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
           <div className="results-area" id="pendant-drop-analysis">
             {console.log(pendantDropOutput.split(/\\r\\n/))}
             {pendantDropOutput.split(/\\r\\n/).map((line, index) => {
+              return <p key={index}>{line}</p>;
+            })}
+          </div>
+        ) : activeResult === "calibration" ? (
+          <div className="results-area" id="calibration">
+            {console.log(calibrationOutput.split(/\\r\\n/))}
+            {calibrationOutput.split(/\\r\\n/).map((line, index) => {
               return <p key={index}>{line}</p>;
             })}
           </div>

@@ -33,6 +33,7 @@ const ControllerSection = ({ onSelect, onDensityAndDiameterSubmit }) => {
           <option value="hysteresis">Hysteresis</option>
           <option value="pendant-drop">Pendant Drop</option>
           <option value="sessile-drop">Sessile Drop</option>
+          <option value="calibration">Calibration</option>
         </select>
       </div>
 

@@ -7,7 +7,7 @@ const VideoSection = ({
   density,
   needleDiameter,
   onProcessingChange,
-  onCSVError
+  onCSVError,
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
@@ -76,7 +76,7 @@ const VideoSection = ({
           onCSVError(false);
           //   console.log(new Date().toLocaleString());
         } catch (error) {
-            onCSVError(true);
+          onCSVError(true);
           console.error("Error running python script video:", error);
         } finally {
           setIsProcessing(false);
@@ -127,6 +127,12 @@ const VideoSection = ({
                 headers: { "Content-Type": "multipart/form-data" },
               });
               console.log("Pendant Drop exited");
+            } else if (activeResult === "calibration") {
+              console.log("Running Calibration");
+              await axios.post("http://localhost:3000/calibration", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+              });
+              console.log("Calibration exited");
             }
           } catch (error) {
             console.error("Error running python script:", error);
@@ -154,6 +160,15 @@ const VideoSection = ({
           </button>
         )}
         {activeResult === "pendant-drop" && (
+          <button
+            onClick={takeScreenshot}
+            className="screenshot-button"
+            disabled={isProcessing}
+          >
+            {isProcessing ? "Processing..." : "Capture Screenshot"}
+          </button>
+        )}
+        {activeResult === "calibration" && (
           <button
             onClick={takeScreenshot}
             className="screenshot-button"
