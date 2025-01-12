@@ -537,7 +537,7 @@ def process_video_for_hysteresis(video_path):
                 continue
 
             left_ca, right_ca, contact_angle, width, sorted_points, left_points, right_points, baseline_y, left_intersection, right_intersection = result
-            if contact_angle is not None:
+            if contact_angle is not None and contact_angle < 180:
                 contact_angles.append(contact_angle)
                 left_contact_angles.append(left_ca)
                 right_contact_angles.append(right_ca)
@@ -619,7 +619,7 @@ def process_video_for_hysteresis(video_path):
     for i in range(len(step)):
         if step[i] == max(step):
             advancing_ca = contact_angles[i]
-        if step[i] == min(step):
+        if step[i] == min(step) and step[i] < 0:
             receding_ca = contact_angles[i]
     if advancing_ca is None:
         with open(file_path, "a") as file:
@@ -659,6 +659,8 @@ def hysteresis():
 
 if __name__ == "__main__":
     video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\video_final.mp4"
+    # video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\water.mp4"
+    # video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\chloroform.mp4"
     # video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\video_sample.mp4"
     # video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\video_sample2.mp4"
     process_video_for_hysteresis(video_path)

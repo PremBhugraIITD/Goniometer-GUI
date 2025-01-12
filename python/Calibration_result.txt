@@ -1,3 +1,1 @@
-Calibration started...
-No points found at y = bottom_y - d_e level.
-No points found at y = bottom_y - d_e level
+Corrected diameter of the needle after calibration: 0.0010650310606357665 m

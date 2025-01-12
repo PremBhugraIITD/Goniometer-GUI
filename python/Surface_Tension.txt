@@ -1,4 +1,6 @@
 Pendant Drop Analysis started...
-Cropping confirmed.
-No points found at y = bottom_y - d_e level.
-No points found at y = bottom_y - d_e level
+No diameter value found in the file.
+Surface tension calculated successfully.
+Maximum diameter of the drop (d_e): 2.886852842369752 mm
+Diameter at the lowest end (d_s): 1.9666507793017272 mm
+Surface tension of the liquid: 74.10286281841351 mN/m

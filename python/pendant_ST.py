@@ -509,7 +509,7 @@ def visualize_contours(image, contours, contour,nlp,nrp, left_point, right_point
             file.write(f"Error in visualizing contours: {e}\n")
         raise ValueError(f"Error in visualizing contours: {e}")
 
-def main(image_path, O_n_d, density):
+def main(image_path, density, O_n_d=0.0010194):
     '''
     Main function to process an image, measure diameters, 
     calculate surface tension, and visualize results.
@@ -613,11 +613,13 @@ def pendant_drop(O_n_d=1.0194*10**(-3), density=997):
 
 image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_final.png"
 # image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_sample.png"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\water.jpg"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\chloroform.jpg"
 
 with open("input_pendant.txt", "r") as file:
         lines = file.readlines()
         density = float(lines[0].strip())  # Read density from the first line
-        O_n_d = float(lines[1].strip())   # Read needle diameter from the second line
+        # O_n_d = float(lines[1].strip())   # Read needle diameter from the second line
 
-print(f"Density: {density}, Needle Diameter: {O_n_d}")
-main(image_path,O_n_d,density)
+# print(f"Density: {density}, Needle Diameter: {O_n_d}")
+main(image_path,density)

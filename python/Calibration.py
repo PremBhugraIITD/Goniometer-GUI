@@ -346,5 +346,7 @@ def calibration(O_n_d=1.0194*10**(-3), density=997):
 
 image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_final.png"
 # image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_sample.png"
+image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\water.jpg"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\chloroform.jpg"
 
 main(image_path)
