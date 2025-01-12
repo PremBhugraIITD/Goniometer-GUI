@@ -1,3 +1,8 @@
 Hysteresis Analysis started...
 Cropping confirmed.
-Cropping region must have a non-zero area.
+Could not find enough intersection points with the baseline.
+The function returned None.
+End of video stream or error in reading the video file.
+Advancing Contact Angle: 179.5343729726194
+Receding Contact Angle: 110.43028268341018
+Contact Angle Hysteresis: 69.10409028920921

@@ -120,7 +120,7 @@ app.post("/hysteresis-analysis", upload.single("video"), (req, res) => {
   console.log("Hysteresis analysis entered");
   const tempPath = req.file.path; // Temporary file path from multer
   const targetPath =
-    "C:/Users/Prem/OneDrive - IIT Delhi/Desktop/screenRecording.mp4";
+    "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/GitHub/S.U.R.A.-2024/python/video_final.mp4";
 
   // Move the video to the target location
   fs.rename(tempPath, targetPath, (err) => {

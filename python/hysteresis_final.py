@@ -1,4 +1,5 @@
 # Import necessary libraries
+import io
 import cv2
 import os
 import numpy as np
@@ -10,6 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
 from collections import defaultdict
 # from ADB_extractor import video_retrieval_from_phone
+from Thresholds import get_threshes
 # warnings.filterwarnings("ignore", category=np.RankWarning)
 
 # Global variables for cropping
@@ -17,7 +19,6 @@ ref_point = []
 cropping = False
 vertical_lines = [None, None]
 
-# File path to save the data
 file_path = "Contact_Angle_Hysteresis.txt"
 with open(file_path, "w") as file:
     file.write("Hysteresis Analysis started...\n")
@@ -60,7 +61,7 @@ def crop_image(event, x, y, flags, param):
         cropping = False
 
         if len(ref_point) != 2:
-            with open(file_path, 'a') as file:
+            with open(file_path, "a") as file:
                 file.write("Invalid cropping points. Please select a valid ROI.\n")
             raise ValueError("Invalid cropping points. Please select a valid ROI.")
         
@@ -105,10 +106,10 @@ def get_cropped_image(image):
     Returns:
         Cropped portion of the image or the original image if cropping is skipped.
     '''
-    global ref_point
+    global ref_point,cropping
     
     if image is None:
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Input image is None. Please provide a valid image.\n")
         raise ValueError("Input image is None. Please provide a valid image.")
     
@@ -135,14 +136,15 @@ def get_cropped_image(image):
             ref_point = []  # Clear previous ROI points
             # clone = image.copy()  # Reset the clone to the original image
             print("Reset cropping selection.")
-            with open(file_path, 'a') as file:
+            with open(file_path, "a") as file:
                 file.write("Reset cropping selection.\n")
 
         # Press 'c' to confirm the crop and break the loop
         elif key == ord("c") and len(ref_point) == 2:
             print("Cropping confirmed.")
-            with open(file_path, 'a') as file:
+            with open(file_path, "a") as file:
                 file.write("Cropping confirmed.\n")
+            cropping=True
             break
 
         # Press 'n' to skip cropping
@@ -153,7 +155,7 @@ def get_cropped_image(image):
         # Check if the window is closed
         if cv2.getWindowProperty("Crop Image", cv2.WND_PROP_VISIBLE) < 1:
             print("Window closed.")
-            with open(file_path, 'a') as file:
+            with open(file_path, "a") as file:
                 file.write("Window closed.\n")
             cv2.destroyAllWindows()
             return image,scale  # Return the original image without cropping
@@ -170,7 +172,7 @@ def get_cropped_image(image):
         y0, y1 = min(y0, y1), max(y0, y1)
         
         if x0 == x1 or y0 == y1:
-            with open(file_path, 'a') as file:
+            with open(file_path, "a") as file:
                 file.write("Cropping region must have a non-zero area.\n")
             raise ValueError("Cropping region must have a non-zero area.")
         
@@ -193,12 +195,12 @@ def read_last_thresholds(file_path2='thresholds_log.txt'):
                 return lower_threshold, upper_threshold
             else:
                 print("No thresholds found in the file.")
-                with open(file_path, 'a') as file:
+                with open(file_path, "a") as file:
                     file.write("No thresholds found in the file.\n")
                 return None, None
     except FileNotFoundError:
         print("Thresholds log file not found.")
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Thresholds log file not found.\n")
         return None, None
 
@@ -214,7 +216,7 @@ def select_baseline(image):
         int: Selected baseline y-position.
     """
     if image is None:
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Input image is None. Please provide a valid image.\n")
         raise ValueError("Input image is None. Please provide a valid image.")
     
@@ -259,7 +261,7 @@ def select_vertical_lines(image):
     global vertical_lines
 
     if image is None:
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Input image is None. Please provide a valid image.\n")
         raise ValueError("Input image is None. Please provide a valid image.")
 
@@ -312,7 +314,7 @@ def average_y_for_same_x(points):
         Numpy array of unique x-coordinates with averaged y-coordinates.
     '''
     if not points.any():
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Input points array of points with same x-coordinate is empty.\n")
         raise ValueError("Input points array of points with same x-coordinate is empty.")
     
@@ -340,7 +342,7 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
         Average contact angle or None if calculation fails.
     '''
     if image is None or baseline_y < 0 or baseline_y >= image.shape[0]:
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Invalid image or baseline position.\n")
         raise ValueError("Invalid image or baseline position.")
     
@@ -359,17 +361,18 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
     
     if len(contours) == 0:
         print("No contours found!")
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("No contours found!\n")
         return None
 
-    contour = max(contours, key=cv2.contourArea)
+    all_points = np.vstack(contours)  # Stack all contour points into one array
+    contour = all_points.reshape(-1, 2)
     contour_points = np.squeeze(contour)
     above_baseline_points = contour_points[contour_points[:, 1] < baseline_y]
 
     if len(above_baseline_points) < 3:
         print("Not enough points found above the baseline.")
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Not enough points found above the baseline.\n")
         return None
 
@@ -378,7 +381,7 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
 
     if len(intersection_points) < 2:
         print("Could not find enough intersection points with the baseline.")
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Could not find enough intersection points with the baseline.\n")
         return None
 
@@ -387,9 +390,9 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
     width = np.linalg.norm(np.array(right_intersection)-np.array(left_intersection))
     if np.all(sorted_points[0] == left_intersection) and np.all(sorted_points[-1] == right_intersection):
         obtuse = False
-        left_points = sorted_points[:201]
+        left_points = sorted_points[:101]
         left_points = average_y_for_same_x(left_points)
-        right_points = sorted_points[-201:]
+        right_points = sorted_points[-101:]
         right_points = average_y_for_same_x(right_points)
     else:
         obtuse = True
@@ -420,7 +423,7 @@ def calculate_contact_angle(image, baseline_y, vertical_lines):
 
     avg_contact_angle = (left_angle + right_angle) / 2
 
-    return left_angle,right_angle,avg_contact_angle,width
+    return left_angle,right_angle,avg_contact_angle,width,sorted_points,left_points,right_points,baseline_y,left_intersection,right_intersection
 
 
 def detect_hysteresis_points(widths, left_contact_angles, right_contact_angles):
@@ -458,21 +461,22 @@ def process_video_for_hysteresis(video_path):
     cap = cv2.VideoCapture(video_path)
 
     if not cap.isOpened():
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Error: Unable to open video file.\n")
         raise FileNotFoundError("Error: Unable to open video file.")
 
     ret, first_frame = cap.read()
     if not ret:
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Error: Could not read the first frame.\n")
         raise ValueError("Error: Could not read the first frame.")
 
     roi, scale = get_cropped_image(first_frame)
     if roi is None:
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write("Failed to select ROI.\n")
         raise ValueError("Failed to select ROI.")
+    get_threshes(roi)
     baseline = select_baseline(roi)
     vertical_lines = select_vertical_lines(roi)
     if len(ref_point) == 2:
@@ -482,26 +486,32 @@ def process_video_for_hysteresis(video_path):
         x0, x1 = min(x0, x1), max(x0, x1)
         y0, y1 = min(y0, y1), max(y0, y1)
     
+    # Initialize video writer (you can adjust the output path, codec, and FPS as needed)
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    output_video = cv2.VideoWriter('output_video.mp4', fourcc, 30.0, (640, 480))  # Adjust size accordingly
+
     # Initialize matplotlib for live graph
     plt.ion()
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(6.4, 4.8), dpi=100)  # 6.4 * 100 = 640, 4.8 * 100 = 480
     contact_angles = []
-    left_contact_angles =[]
-    right_contact_angles =[]
+    left_contact_angles = []
+    right_contact_angles = []
     frame_indices = []
-    widths=[]
-    step=[]
-    line, = ax.plot([], [], label='Contact Angle (°)', color='r')
+    widths = []
+    step = []
+    line_contact_angle, = ax.plot([], [], label='Contact Angle (\xb0)', color='r')
+    line_left_contact_angle, = ax.plot([], [], label='Left Contact Angle (\xb0)', color='g')
+    line_right_contact_angle, = ax.plot([], [], label='Right Contact Angle (\xb0)', color='b')
     ax.set_xlim(0, 100)  # Initial limits, will be updated dynamically
     ax.set_ylim(90, 110)
     ax.set_xlabel("Frame Index")
-    ax.set_ylabel("Contact Angle (°)")
+    ax.set_ylabel("Contact Angle (\xb0)")
     ax.legend()
-    # Access the current figure's Tkinter window
-    canvas = plt.gcf().canvas
-    tk_window = canvas.manager.window
-    # Set the window size and position using Tkinter's geometry method
-    tk_window.geometry("960x540+0+0")  # Position at (0, 0) with size 960x540
+      # Access the current figure's Tkinter window
+    # canvas = plt.gcf().canvas
+    # tk_window = canvas.manager.window
+    # # Set the window size and position using Tkinter's geometry method
+    # tk_window.geometry("960x540+0+0")  # Position at (0, 0) with size 960x540
     frame_index = 0
     with open('contact_angle_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
@@ -512,138 +522,143 @@ def process_video_for_hysteresis(video_path):
 
             if not ret:
                 print("End of video stream or error in reading the video file.")
-                with open(file_path, 'a') as file:
+                with open(file_path, "a") as file:
                     file.write("End of video stream or error in reading the video file.\n")
                 break
-            else:
+            
+            # Process the frame for contact angle calculations
+            if cropping:
+                frame = frame[y0:y1, x0:x1]
+            result = calculate_contact_angle(frame, baseline, vertical_lines)
+            if result is None:
+                print("The function returned None.")
+                with open(file_path, "a") as file:
+                    file.write("The function returned None.\n")
+                continue
 
-                # Process the frame for contact angle calculations
-                if cropping:
-                    frame = frame[y0:y1, x0:x1]
-                result = calculate_contact_angle(frame, baseline,vertical_lines)
-                if result is None:
-                    print("The function returned None.")
-                    with open(file_path, 'a') as file:
-                        file.write("The function returned None.\n")
-                else:
-                    left_ca, right_ca, contact_angle, width = result
-                if contact_angle is not None:
-                    contact_angles.append(contact_angle)
-                    left_contact_angles.append(left_ca)
-                    right_contact_angles.append(right_ca)
-                    widths.append(width)
-                    writer.writerow([frame_index,left_ca,right_ca,contact_angle,width])
-                # Filter out None values from contact_angles
-                filtered_contact_angles = [angle for angle in contact_angles if angle is not None]
+            left_ca, right_ca, contact_angle, width, sorted_points, left_points, right_points, baseline_y, left_intersection, right_intersection = result
+            if contact_angle is not None:
+                contact_angles.append(contact_angle)
+                left_contact_angles.append(left_ca)
+                right_contact_angles.append(right_ca)
+                widths.append(width)
+                writer.writerow([frame_index, left_ca, right_ca, contact_angle, width])
 
-                frame_indices.append(frame_index)
+            filtered_contact_angles = [angle for angle in contact_angles if angle is not None]
+            frame_indices.append(frame_index)
 
-                # Update live plot
-                line.set_xdata(frame_indices)
-                line.set_ydata(contact_angles)
+            # Update live plot for all three lines
+            line_contact_angle.set_xdata(frame_indices)
+            line_contact_angle.set_ydata(contact_angles)
 
-                ax.set_xlim(0, max(100, frame_index))
-                # Check if filtered_contact_angles is not empty
-                if filtered_contact_angles:
-                    ax.set_ylim(min(filtered_contact_angles) - 5, max(filtered_contact_angles) + 5)
-                else:
-                    print("Error: contact_angles contains only None values.")
-                    with open(file_path, 'a') as file:
-                        file.write("Error: contact_angles contains only None values.\n")
-                
-                plt.pause(0.01)
-                frame_index += 1
-    # Determination of advancing and receding contact angles
-    advancing_ca = None
-    receding_ca = None
-    for i in range(1,len(widths)):
-        step.append(widths[i]-widths[i-1])
+            line_left_contact_angle.set_xdata(frame_indices)
+            line_left_contact_angle.set_ydata(left_contact_angles)
+
+            line_right_contact_angle.set_xdata(frame_indices)
+            line_right_contact_angle.set_ydata(right_contact_angles)
+
+            ax.set_xlim(0, max(100, frame_index))
+            ax.set_ylim(0, 180)
+            plt.draw()
+            plt.pause(0.01)
+
+            # Function to generate tangent line points
+            def generate_ltangent_points(points, intersection_point):
+                poly_coeffs = np.polyfit(points[:, 0], points[:, 1], 2)
+                poly = np.poly1d(poly_coeffs)
+                slope = np.polyder(poly)(intersection_point[0])
+                x_vals = np.linspace(intersection_point[0], intersection_point[0] + 70, 100)
+                y_vals = slope * (x_vals - intersection_point[0]) + intersection_point[1]
+                return x_vals, y_vals
+            def generate_rtangent_points(points, intersection_point):
+                poly_coeffs = np.polyfit(points[:, 0], points[:, 1], 2)
+                poly = np.poly1d(poly_coeffs)
+                slope = np.polyder(poly)(intersection_point[0])
+                x_vals = np.linspace(intersection_point[0]-70, intersection_point[0], 100)
+                y_vals = slope * (x_vals - intersection_point[0]) + intersection_point[1]
+                return x_vals, y_vals
+            
+            # Generate and plot tangents for both left and right intersections
+            x_tangent_left, y_tangent_left = generate_ltangent_points(left_points, left_intersection)
+            x_tangent_right, y_tangent_right = generate_rtangent_points(right_points, right_intersection)
+            
+            # Annotate the frame with OpenCV
+            for point in sorted_points:
+                cv2.circle(frame, (int(point[0]), int(point[1])), 1, (135, 206, 235), -1)  # Blue points
+            for point in left_points:
+                cv2.circle(frame, (int(point[0]), int(point[1])), 1, (144, 238, 144), -1)  # Green points
+            for point in right_points:
+                cv2.circle(frame, (int(point[0]), int(point[1])), 1, (255, 127, 80), -1)  # Red points
+            cv2.line(frame, (0, int(baseline_y)), (frame.shape[1], int(baseline_y)), (255, 255, 0), 1, cv2.LINE_AA)
+            cv2.circle(frame, (int(left_intersection[0]), int(left_intersection[1])), 6, (255, 255, 0), -1)
+            cv2.circle(frame, (int(right_intersection[0]), int(right_intersection[1])), 6, (255, 255, 0), -1)
+
+            # Draw tangents on the frame
+            for i in range(len(x_tangent_left)-1):
+                # For left tangents (black color)
+                cv2.line(frame, (int(x_tangent_left[i]), int(y_tangent_left[i])), 
+                        (int(x_tangent_left[i+1]), int(y_tangent_left[i+1])), 
+                        (0, 0, 0), 2)  # Black tangent for left
+
+            for i in range(len(x_tangent_right)-1):
+                # For right tangents (black color)
+                cv2.line(frame, (int(x_tangent_right[i]), int(y_tangent_right[i])), 
+                        (int(x_tangent_right[i+1]), int(y_tangent_right[i+1])), 
+                        (0, 0, 0), 2)  # Black tangent for right# Show the annotated frame
+            cv2.imshow("Video Analysis", frame)
+
+            output_video.write(frame)
+            frame_index += 1
+
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+
+    advancing_ca, receding_ca = None, None
+    for i in range(1, len(widths)):
+        step.append(widths[i] - widths[i - 1])
     for i in range(len(step)):
-        if step[i]==max(step):
+        if step[i] == max(step):
             advancing_ca = contact_angles[i]
-        if step[i]==min(step):
+        if step[i] == min(step):
             receding_ca = contact_angles[i]
-    if advancing_ca == None:
-        with open(file_path, 'a') as file:
+    if advancing_ca is None:
+        with open(file_path, "a") as file:
             file.write("Failed to calculate the advancing contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.\n")
-        raise ValueError ("Failed to calculate the advancing contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.")
-    if receding_ca == None:
-        with open(file_path, 'a') as file:
+        raise ValueError("Failed to calculate the advancing contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.")
+    if receding_ca is None:
+        with open(file_path, "a") as file:
             file.write("Failed to calculate the receding contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.\n")
-        raise ValueError ("Failed to calculate the receding contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.")
-    Contact_Angle_Hysteresis = advancing_ca-receding_ca
-        
-    # Create the text content
+        raise ValueError("Failed to calculate the receding contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.")
+    Contact_Angle_Hysteresis = advancing_ca - receding_ca
+
     text_content = (
         f"Advancing Contact Angle: {advancing_ca}\n"
         f"Receding Contact Angle: {receding_ca}\n"
         f"Contact Angle Hysteresis: {Contact_Angle_Hysteresis}\n"
     )
 
-    # Write the data to a text file
     with open(file_path, "a") as file:
         file.write(text_content)
-    
 
     cap.release()
+    output_video.release()
     cv2.destroyAllWindows()
     plt.ioff()
     plt.show()
 
-def get_latest_file(directory):
-    """
-    Get the most recent file from the specified directory.
 
-    Args:
-        directory (str): Path to the directory.
-
-    Returns:
-        str: Path to the latest file, or None if no files are found.
-    """
-    try:
-        # Convert directory path to a Path object
-        path = Path(directory)
-
-        # List all files in the directory
-        files = [f for f in path.iterdir() if f.is_file()]
-
-        if not files:
-            print(f"No files found in {directory}.")
-            with open(file_path, 'a') as file:
-                file.write(f"No files found in {directory}.\n")
-            return None
-
-        # Find the most recent file based on modification time
-        latest_file = max(files, key=lambda f: f.stat().st_mtime)
-        return str(latest_file)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        with open(file_path, 'a') as file:
-            file.write(f"An error occurred: {e}\n")
-        return None
-
-def load_latest_image_path():
-    # Replace with the directory where files are stored on your PC
-    DIRECTORY = r"C:\Users\91982\OneDrive\Desktop\SURA\Retrieved_Data_Input"
-
-    latest_file = get_latest_file(DIRECTORY)
-    if latest_file:
-        return latest_file
-    else:
-        print("No file could be retrieved.")
-        with open(file_path, 'a') as file:
-            file.write("No file could be retrieved.\n")
-
-# def hysteresis():
-#     # video_retrieval_from_phone()
-#     os.chdir(r"C:\Users\91982\OneDrive\Desktop\SURA")
-#     video_path= str(load_latest_image_path())
-#     video_path = r"C:\Users\91982\Videos\hysteresis.mp4"
-#     process_video_for_hysteresis(video_path)
+def hysteresis():
+    # video_retrieval_from_phone()
+    os.chdir(r"C:\Users\91982\OneDrive\Desktop\SURA")
+    # video_path= str(load_latest_image_path())
+    # video_path = r"C:\Users\91982\Videos\hysteresis.mp4"
+    video_path=r"C:\Users\91982\Downloads\video.mp4"
+    process_video_for_hysteresis(video_path)
 
 # hysteresis()
 
 if __name__ == "__main__":
-    video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\video.mp4"  # Replace with the path to your video file
-    # video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenRecording.mp4"  # Replace with the path to your video file
+    video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\video_final.mp4"
+    # video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\video_sample.mp4"
+    # video_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\video_sample2.mp4"
     process_video_for_hysteresis(video_path)

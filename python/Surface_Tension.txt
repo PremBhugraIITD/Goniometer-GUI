@@ -1,4 +1,4 @@
 Pendant Drop Analysis started...
 Cropping confirmed.
-Cropping region must have a non-zero area.
-Error in preprocessing image: Cropping region must have a non-zero area.
+No points found at y = bottom_y - d_e level.
+No points found at y = bottom_y - d_e level

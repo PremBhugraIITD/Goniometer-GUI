@@ -1,5 +1,5 @@
 Sessile Drop Analysis started...
 Cropping confirmed.
-Left Contact Angle: 139.51 degrees
-Right Contact Angle: 185.37 degrees
-Average Contact Angle: 162.44 degrees
+Left Contact Angle: 91.19 degrees
+Right Contact Angle: 201.51 degrees
+Average Contact Angle: 146.35 degrees
