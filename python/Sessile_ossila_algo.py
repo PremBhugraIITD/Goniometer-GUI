@@ -1,17 +1,20 @@
-from collections import defaultdict
 import cv2
 import os
 import numpy as np
+from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
-
+from collections import defaultdict
+# from ADB_extractor import image_retrieval_from_phone
+from Thresholds import get_threshes
 # Global variables for cropping
 ref_point = []
 cropping = False
+
 # File path to save the data
 file_path = "Static_Contact_Angle.txt"
 with open(file_path, "w") as file:
-    file.write("Sessile Drop analysis started...\n")
+    file.write("Sessile Drop Analysis started...\n")
 
 # Mouse callback function to select the cropping area
 def crop_image(event, x, y, flags, param):
@@ -40,6 +43,10 @@ def crop_image(event, x, y, flags, param):
             top_left = (min(ref_point[0][0], current_point[0]), min(ref_point[0][1], current_point[1]))
             bottom_right = (max(ref_point[0][0], current_point[0]), max(ref_point[0][1], current_point[1]))
             cv2.rectangle(clone, top_left, bottom_right, (0, 0, 255), 2)  # Draw the rectangle in red
+            # Resize the window (width, height)
+            cv2.resizeWindow("Crop Image", 960, 540)
+            # Move the window (x, y position on screen)
+            cv2.moveWindow("Crop Image", 0 , 0)
             cv2.imshow("Crop Image", clone)
 
     elif event == cv2.EVENT_LBUTTONUP:
@@ -55,7 +62,31 @@ def crop_image(event, x, y, flags, param):
         top_left = (min(ref_point[0][0], x), min(ref_point[0][1], y))
         bottom_right = (max(ref_point[0][0], x), max(ref_point[0][1], y))
         cv2.rectangle(param, top_left, bottom_right, (0, 0, 255), 2)  # Draw the rectangle in red
+        # Resize the window (width, height)
+        cv2.resizeWindow("Crop Image", 960, 540)
+        # Move the window (x, y position on screen)
+        cv2.moveWindow("Crop Image", 0, 0)
         cv2.imshow("Crop Image", param)
+
+# Function to resize the image to fit within the screen
+def resize_to_fit_screen(image, screen_width=800, screen_height=600):
+    """
+    Resizes the image to fit within the screen dimensions while maintaining the aspect ratio.
+
+    Args:
+        image: The input image to resize.
+        screen_width: Maximum width of the screen.
+        screen_height: Maximum height of the screen.
+
+    Returns:
+        Resized image and the scale factor.
+    """
+    h, w = image.shape[:2]
+    scale = min(screen_width / w, screen_height / h)
+    if scale < 1:  # Resize only if the image is larger than the screen
+        resized_image = cv2.resize(image, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
+        return resized_image, scale
+    return image, 1.0  # Return the original image if no resizing is needed
 
 # Function to allow the user to crop the image
 def get_cropped_image(image):
@@ -75,10 +106,17 @@ def get_cropped_image(image):
             file.write("Input image is None. Please provide a valid image.\n")
         raise ValueError("Input image is None. Please provide a valid image.")
     
-    clone = image.copy()
+    # Resize the image to fit the screen
+    resized_image, scale = resize_to_fit_screen(image)
+
+    clone = resized_image.copy()
 
     # Set up the window and set the mouse callback function for cropping
     cv2.namedWindow("Crop Image")
+    # Resize the window (width, height)
+    cv2.resizeWindow("Crop Image", 960, 540)
+    # Move the window (x, y position on screen)
+    cv2.moveWindow("Crop Image", 0, 0)
     cv2.setMouseCallback("Crop Image", crop_image, param=clone)
 
     # Display the image and wait for cropping
@@ -93,6 +131,7 @@ def get_cropped_image(image):
             print("Reset cropping selection.")
             with open(file_path, "a") as file:
                 file.write("Reset cropping selection.\n")
+
         # Press 'c' to confirm the crop and break the loop
         elif key == ord("c") and len(ref_point) == 2:
             print("Cropping confirmed.")
@@ -118,8 +157,8 @@ def get_cropped_image(image):
 
     # Crop the selected area
     if len(ref_point) == 2:
-        x0, y0 = ref_point[0]
-        x1, y1 = ref_point[1]
+        x0, y0 = int(ref_point[0][0] / scale), int(ref_point[0][1] / scale)
+        x1, y1 = int(ref_point[1][0] / scale), int(ref_point[1][1] / scale)
         # Get the coordinates in correct order
         x0, x1 = min(x0, x1), max(x0, x1)
         y0, y1 = min(y0, y1), max(y0, y1)
@@ -221,8 +260,8 @@ def calculate_contact_angle(image, baseline_y):
             file.write("No contours found!\n")
         return None
 
-    # Assume the largest contour is the drop (adjust to detect full contour)
-    contour = max(contours, key=cv2.contourArea)
+    all_points = np.vstack(contours)  # Stack all contour points into one array
+    contour = all_points.reshape(-1, 2)
 
     # Get the x, y coordinates of the contour points
     contour_points = np.squeeze(contour)
@@ -321,7 +360,11 @@ def calculate_contact_angle(image, baseline_y):
     
     plt.title(f'Contact Angle: {avg_contact_angle:.2f} degrees')
     plt.legend()
-    # plt.savefig("Contact_Angle_Plot.png")
+    # Access the current figure's Tkinter window
+    canvas = plt.gcf().canvas
+    tk_window = canvas.manager.window
+    # Set the window size and position using Tkinter's geometry method
+    tk_window.geometry("960x540+0+0")
     plt.show()
 
     return avg_contact_angle
@@ -365,6 +408,11 @@ def select_baseline(image):
         fig.canvas.draw_idle()
 
     baseline_slider.on_changed(update)
+    # Access the current figure's Tkinter window
+    canvas = plt.gcf().canvas
+    tk_window = canvas.manager.window
+    # Set the window size and position using Tkinter's geometry method
+    tk_window.geometry("960x540+0+0")
     plt.show()
 
     return int(baseline_slider.val)
@@ -385,14 +433,13 @@ def process_image(image):
     global cropped_image
     # Get the cropped image from the user
     cropped_image = get_cropped_image(image)
-
     # Check if the user has skipped cropping
     if np.array_equal(cropped_image, image):
         # User chose not to crop, proceed with original image
         print("No cropping done. Using the original image.")
         with open(file_path, "a") as file:
             file.write("No cropping done. Using the original image.\n")
-    
+    get_threshes(cropped_image)
     # Select baseline using slider
     baseline_y = select_baseline(cropped_image)
 
@@ -404,19 +451,71 @@ def process_image(image):
         with open(file_path, "a") as file:
             file.write("Contact angle calculation failed.\n")
 
+def get_latest_file(directory):
+    """
+    Get the most recent file from the specified directory.
+
+    Args:
+        directory (str): Path to the directory.
+
+    Returns:
+        str: Path to the latest file, or None if no files are found.
+    """
+    try:
+        # Convert directory path to a Path object
+        path = Path(directory)
+
+        # List all files in the directory
+        files = [f for f in path.iterdir() if f.is_file()]
+
+        if not files:
+            print(f"No files found in {directory}.")
+            with open(file_path, "a") as file:
+                file.write(f"No files found in {directory}.\n")
+            return None
+
+        # Find the most recent file based on modification time
+        latest_file = max(files, key=lambda f: f.stat().st_mtime)
+        return str(latest_file)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        with open(file_path, "a") as file:
+            file.write(f"An error occurred: {e}\n")
+        return None
+
+def load_latest_image_path():
+    # Replace with the directory where files are stored on your PC
+    DIRECTORY = r"C:\Users\91982\OneDrive\Desktop\SURA\Retrieved_Data_Input"
+
+    latest_file = get_latest_file(DIRECTORY)
+    if latest_file:
+        return latest_file
+    else:
+        print("No file could be retrieved.")
+        with open(file_path, "a") as file:
+            file.write("No file could be retrieved.\n")
+
+def sessile_drop():
+    # image_retrieval_from_phone()
+    os.chdir(r"C:\Users\91982\OneDrive\Desktop\SURA")
+    image_path= str(load_latest_image_path())
+    image = cv2.imread(image_path)
+    process_image(image)
+
+# sessile_drop()
 # # Load the image
 # # image_path = r"C:\Users\91982\Downloads\no annotation 2.png" 
 # image_path = r"C:\Users\91982\Downloads\drop4.jpg"
 # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-08-07 230147.png"
 # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-08-07 230147.png"
-# image_path = r"C:\Users\91982\Downloads\img18.jpg"
+# image_path = r"C:\Users\91982\Downloads\img19.jpg"
 # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-12-20 025005.png"
 # # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-08-07 230147.png"
-image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
-# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenshot.png"
-# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\temporary2.jpg"
+
+image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_final.png"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_sample.png"
+
 image = cv2.imread(image_path)
 
 # # Process the image for contact angle calculation
 process_image(image)
-

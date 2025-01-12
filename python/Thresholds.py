@@ -1,7 +1,10 @@
 import cv2
+import os
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 from matplotlib.widgets import Slider
+# from ADB_extractor import image_retrieval_from_phone
 
 # Global list to keep track of the contour plot objects
 contour_lines = []
@@ -11,7 +14,7 @@ def log_thresholds(lower_threshold, upper_threshold):
     with open('thresholds_log.txt', 'w') as file:
         file.write(f"Final Lower Threshold: {lower_threshold}, Final Upper Threshold: {upper_threshold}")
 
-def update(val):
+def update(val, slider_lower, slider_upper, ax, fig, image, gray_image):
     """Update function to adjust the Canny thresholds and update contour display."""
     # Get the current values from the sliders
     lower_threshold = int(slider_lower.val)
@@ -45,16 +48,52 @@ def update(val):
 
     return lower_threshold, upper_threshold, contours
 
-def on_close(event):
+def on_close(event,slider_lower,slider_upper):
     """Callback function when the window is closed to log the final thresholds."""
     lower_threshold = int(slider_lower.val)
     upper_threshold = int(slider_upper.val)
     log_thresholds(lower_threshold, upper_threshold)
     print("Final thresholds logged.")
 
-if __name__ == "__main__":
-    # Load the image
-    image = cv2.imread(r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png")  # Replace with your image path
+def get_latest_file(directory):
+    """
+    Get the most recent file from the specified directory.
+
+    Args:
+        directory (str): Path to the directory.
+
+    Returns:
+        str: Path to the latest file, or None if no files are found.
+    """
+    try:
+        # Convert directory path to a Path object
+        path = Path(directory)
+
+        # List all files in the directory
+        files = [f for f in path.iterdir() if f.is_file()]
+
+        if not files:
+            print(f"No files found in {directory}.")
+            return None
+
+        # Find the most recent file based on modification time
+        latest_file = max(files, key=lambda f: f.stat().st_mtime)
+        return str(latest_file)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+def load_latest_image_path():
+    # Replace with the directory where files are stored on your PC
+    DIRECTORY = r"C:\Users\91982\OneDrive\Desktop\SURA\Retrieved_Data_Input"
+
+    latest_file = get_latest_file(DIRECTORY)
+    if latest_file:
+        return latest_file
+    else:
+        print("No file could be retrieved.")
+
+def get_threshes(image):
 
     # Convert the image to grayscale
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -75,11 +114,24 @@ if __name__ == "__main__":
     slider_upper = Slider(ax_slider_upper, 'Upper Threshold', 0, 255, valinit=200, valstep=1)
 
     # Attach the update function to the sliders
-    slider_lower.on_changed(update)
-    slider_upper.on_changed(update)
+    slider_lower.on_changed(lambda val: update(val, slider_lower, slider_upper, ax, fig, image, gray_image))
+    slider_upper.on_changed(lambda val: update(val, slider_lower, slider_upper, ax, fig, image, gray_image))
+
 
     # Connect the close event to log the final thresholds
-    fig.canvas.mpl_connect('close_event', on_close)
-
+    fig.canvas.mpl_connect('close_event', lambda event: on_close(event, slider_lower, slider_upper))
+    # Access the current figure's Tkinter window
+    canvas = plt.gcf().canvas
+    tk_window = canvas.manager.window
+    # Set the window size and position using Tkinter's geometry method
+    tk_window.geometry("960x540+0+0")  # Position at (0, 0) with size 960x540
     # Show the plot
     plt.show()
+
+def Threshold():
+    # image_retrieval_from_phone()
+    os.chdir(r"C:\Users\91982\OneDrive\Desktop\SURA")
+    image_path= str(load_latest_image_path())
+    image_path = r"C:\Users\91982\Downloads\obtuse.jpg"
+    image = cv2.imread(image_path)
+    get_threshes(image)

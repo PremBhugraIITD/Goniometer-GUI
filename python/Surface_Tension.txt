@@ -4,3 +4,17 @@ Thresholds log file not found.nSurface tension calculated successfully.
 Maximum diameter of the drop (d_e): 291039.91619682976 mm
 Diameter at the lowest end (d_s): 144348.6402597636 mm
 Surface tension of the liquid: 318071520791.6743 mN/m
+
+
+
+
+# O_n_d=0.0010194
+# density=997
+
+with open("input_pendant.txt", "r") as file:
+        lines = file.readlines()
+        density = float(lines[0].strip())  # Read density from the first line
+        O_n_d = float(lines[1].strip())   # Read needle diameter from the second line
+
+print(f"Density: {density}, Needle Diameter: {O_n_d}")
+main(image_path,O_n_d,density)

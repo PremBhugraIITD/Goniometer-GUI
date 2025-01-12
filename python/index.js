@@ -26,7 +26,7 @@ app.post("/sessile-drop", upload.single("image"), (req, res) => {
   console.log("Sessile Drop entered");
   const tempPath = req.file.path;
   const targetPath =
-    "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/screenshot.png";
+    "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/GitHub/S.U.R.A.-2024/python/image_final.png";
 
   // Move the file to the desired location
   fs.rename(tempPath, targetPath, (err) => {
