@@ -64,7 +64,7 @@ app.post("/pendant-drop", upload.single("image"), (req, res) => {
 
   const tempPath = req.file.path;
   const targetPath =
-    "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/screenshot.png";
+    "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/GitHub/S.U.R.A.-2024/python/image_final.png";
 
   const density = req.body.density;
   const needleDiameter = req.body.needleDiameter;
@@ -248,7 +248,21 @@ app.post("/run-scrcpy", (req, res) => {
     if (error) {
       console.error(`Error executing scrcpy: ${error}`);
       fs.writeFile(
+        "Surface_Tension.txt",
+        "Connection to phone not established",
+        (err) => {
+          console.log("Error Occurred");
+        }
+        );
+      fs.writeFile(
         "Static_Contact_Angle.txt",
+        "Connection to phone not established",
+        (err) => {
+          console.log("Error Occurred");
+        }
+      );
+      fs.writeFile(
+        "Contact_Angle_Hysteresis.txt",
         "Connection to phone not established",
         (err) => {
           console.log("Error Occurred");
@@ -266,9 +280,6 @@ app.post("/run-scrcpy", (req, res) => {
 
 app.use((err, req, res, next) => {
   console.log("Error Occurred");
-  fs.writeFile("Static_Contact_Angle.txt", `Error: ${err}`, (err) => {
-    console.log("Error Occurred");
-  });
 });
 
 app.listen(PORT, () => {

@@ -5,15 +5,16 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 from scipy.interpolate import interp1d
 # from ADB_extractor import image_retrieval_from_phone
+from Thresholds import get_threshes
 
 # Global variables for cropping
 ref_point = []
 cropping = False
 
-#File path to save the data
+# File path to save the data
 file_path = "Surface_Tension.txt"
-with open(file_path, "w") as file:
-    file.write("Pendant Drop analysis started...\n")
+with open (file_path, "w") as file:
+    file.write("Pendant Drop Analysis started...\n")
 
 # Mouse callback function to select the cropping area
 def crop_image(event, x, y, flags, param):
@@ -43,7 +44,7 @@ def crop_image(event, x, y, flags, param):
             bottom_right = (max(ref_point[0][0], current_point[0]), max(ref_point[0][1], current_point[1]))
             cv2.rectangle(clone, top_left, bottom_right, (0, 0, 255), 2)  # Draw the rectangle in red
             # Resize the window (width, height)
-            cv2.resizeWindow("Crop Image", 960, 540)
+            
             # Move the window (x, y position on screen)
             cv2.moveWindow("Crop Image", 0 , 0)
             cv2.imshow("Crop Image", clone)
@@ -62,7 +63,7 @@ def crop_image(event, x, y, flags, param):
         bottom_right = (max(ref_point[0][0], x), max(ref_point[0][1], y))
         cv2.rectangle(param, top_left, bottom_right, (0, 0, 255), 2)  # Draw the rectangle in red
         # Resize the window (width, height)
-        cv2.resizeWindow("Crop Image", 960, 540)
+        
         # Move the window (x, y position on screen)
         cv2.moveWindow("Crop Image", 0 , 0)
         cv2.imshow("Crop Image", param)
@@ -112,8 +113,6 @@ def get_cropped_image(image):
 
     # Set up the window and set the mouse callback function for cropping
     cv2.namedWindow("Crop Image")
-    # Resize the window (width, height)
-    cv2.resizeWindow("Crop Image", 960, 540)
     # Move the window (x, y position on screen)
     cv2.moveWindow("Crop Image", 0 , 0)
     cv2.setMouseCallback("Crop Image", crop_image, param=clone)
@@ -192,7 +191,7 @@ def read_last_thresholds(file_path2='thresholds_log.txt'):
     except FileNotFoundError:
         print("Thresholds log file not found.")
         with open(file_path, "a") as file:
-            file.write("Thresholds log file not found.n")
+            file.write("Thresholds log file not found.\n")
         return None, None
 
 def read_corrected_diameter(file_path3='Calibration_result.txt'):
@@ -253,6 +252,7 @@ def preprocess_image(image_path):
             raise FileNotFoundError(f"Could not load image from path: {image_path}")
         # Get the cropped image from the user
         cropped_image = get_cropped_image(image)
+        get_threshes(cropped_image)
         gray = cv2.cvtColor(cropped_image, cv2.COLOR_BGR2GRAY)
         blurred = cv2.GaussianBlur(gray, (5, 5), 0)
         lower_threshold, upper_threshold = read_last_thresholds()
@@ -260,7 +260,7 @@ def preprocess_image(image_path):
             edges = cv2.Canny(blurred, lower_threshold, upper_threshold)
         else:
             edges = cv2.Canny(blurred, 50, 150)
-        return edges, image
+        return edges, cropped_image
     except Exception as e:
         with open(file_path, "a") as file:
             file.write(f"Error in preprocessing image: {e}\n")
@@ -287,8 +287,9 @@ def find_contour(edges):
             file.write("No contours found in the edge-detected image.\n")
         raise ValueError("No contours found in the edge-detected image.")
     
-    # Assuming the largest contour is the hanging drop
-    contour = max(contours, key=cv2.contourArea)
+    all_points = np.vstack(contours)  # Stack all contour points into one array
+    contour = all_points.reshape(-1, 2)
+
     return contours, contour
 
 def measure_diameters(contour):
@@ -309,9 +310,9 @@ def measure_diameters(contour):
         # Get the points in the contour
         points = np.squeeze(contour)
         if points.ndim != 2 or points.shape[1] != 2:
-                with open(file_path, "a") as file:
-                    file.write("Contour points are not in the expected format.\n")
-                raise ValueError("Contour points are not in the expected format.")
+            with open(file_path, "a") as file:
+                file.write("Contour points are not in the expected format.\n")
+            raise ValueError("Contour points are not in the expected format.")
         # Split the x and y coordinates
         x = points[:, 0]
         y = points[:, 1]
@@ -323,12 +324,11 @@ def measure_diameters(contour):
         # Generate new set of points
         new_x = f_x(np.linspace(0, len(x)-1, num=500))  # 500 points for smoother curve
         new_y = f_y(np.linspace(0, len(y)-1, num=500))
-        points = np.vstack((new_x, new_y)).T
+        # points = np.vstack((new_x, new_y)).T
         # Find the leftmost and rightmost points for d_e
         left_point = points[np.argmin(points[:, 0])]
         right_point = points[np.argmax(points[:, 0])]
         d_e = np.linalg.norm(right_point - left_point)
-        
         # Find the lowest point
         bottom_point = points[np.argmax(points[:, 1])]
         
@@ -393,7 +393,8 @@ def calculate_needle_diameter(image, blur_kernel=(5, 5)):
             raise ValueError("No contours found. Check the image quality or adjust parameters.")
 
         # Step 5: Use the largest contour to determine the needle diameter
-        largest_contour = max(contours, key=cv2.contourArea)
+        all_points = np.vstack(contours)  # Stack all contour points into one array
+        largest_contour = all_points.reshape(-1, 2)
         points = np.squeeze(largest_contour)
 
         if points.ndim != 2 or points.shape[1] != 2:
@@ -534,11 +535,10 @@ def main(image_path, O_n_d, density):
     surface_tension = calculate_surface_tension(d_e, d_s, density)
 
     # Visualize the results for the drop
-    left_point = contour[np.argmin(contour[:, :, 0])]
-    right_point = contour[np.argmax(contour[:, :, 0])]
-    bottom_point = contour[np.argmax(contour[:, :, 1])]
-
-    visualize_contours(image, contours, contour,nlp,nrp, left_point[0], right_point[0], bottom_point[0], left_point_at_y, right_point_at_y, d_e*1000, d_s*1000, O_n_d*1000)
+    left_point = contour[np.argmin(contour[:, 0])]
+    right_point = contour[np.argmax(contour[:, 0])]
+    bottom_point = contour[np.argmax(contour[:, 1])]
+    visualize_contours(image, contours, contour,nlp,nrp, left_point, right_point, bottom_point, left_point_at_y, right_point_at_y, d_e*1000, d_s*1000, O_n_d*1000)
     
     # Create the text content
     text_content = (
@@ -546,8 +546,6 @@ def main(image_path, O_n_d, density):
         f"Diameter at the lowest end (d_s): {d_s*1000} mm\n"
         f"Surface tension of the liquid: {surface_tension} mN/m\n"
     )
-
-    # File path to save the data
 
     # Write the data to a text file
     with open(file_path, "a") as file:
@@ -597,22 +595,24 @@ def load_latest_image_path():
         with open(file_path, "a") as file:
             file.write("No file could be retrieved.\n")
 
-# def pendant_drop(O_n_d=1.0194*10**(-3), density=997):
-#     image_retrieval_from_phone()
-#     os.chdir(r"C:\Users\91982\OneDrive\Desktop\SURA")
-#     image_path= str(load_latest_image_path())
-#     image_path = r"C:\Users\91982\Downloads\pdlab3.jpg"
-#     main(image_path, O_n_d, density)
+def pendant_drop(O_n_d=1.0194*10**(-3), density=997):
+    # image_retrieval_from_phone()
+    os.chdir(r"C:\Users\91982\OneDrive\Desktop\SURA")
+    # image_path= str(load_latest_image_path())
+    image_path = r"C:\Users\91982\Downloads\pdgoniochloro.jpg"
+    main(image_path, O_n_d, density)
 
-# pendant_drop()
+# pendant_drop(density=1489.2)
 
 # image_path = r"C:\Users\91982\Downloads\pdlab3.jpg"
-image_path = r"c:\Users\Prem\OneDrive\Pictures\Screenshots\Screenshot 2024-12-22 051457.png"
-# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\screenshot.png"
+# main(image_path)
 
 
 # O_n_d=0.0010194
 # density=997
+
+image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_final.png"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_sample.png"
 
 with open("input_pendant.txt", "r") as file:
         lines = file.readlines()
