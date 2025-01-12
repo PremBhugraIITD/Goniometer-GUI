@@ -59,19 +59,18 @@ app.post("/sessile-drop", upload.single("image"), (req, res) => {
   });
 });
 
-app.post("/pendant-drop", upload.single("image"), (req, res) => {
-  console.log("Pendant Drop entered");
+app.post("/pendant-drop-image", upload.single("image"), (req, res) => {
+  console.log("Pendant Drop (Image) entered");
 
   const tempPath = req.file.path;
   const targetPath =
     "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/GitHub/S.U.R.A.-2024/python/image_final.png";
 
   const density = req.body.density;
-  const needleDiameter = req.body.needleDiameter;
 
-  if (!density || !needleDiameter) {
-    console.error("Density or needle diameter is missing");
-    return res.status(400).json({ message: "Missing required inputs." });
+  if (!density) {
+    console.error("Density is missing");
+    return res.status(400).json({ message: "Missing required input" });
   }
 
   // Step 1: Save the screenshot
@@ -83,7 +82,7 @@ app.post("/pendant-drop", upload.single("image"), (req, res) => {
     console.log("Image uploaded successfully");
     console.log("Starting the python script");
     // Step 2: Write density and needle diameter to input_pendant.txt
-    const inputContent = `${density}\n${needleDiameter}`;
+    const inputContent = `${density}`;
     fs.writeFile("input_pendant.txt", inputContent, (err) => {
       if (err) {
         console.error("Error writing input file:", err);
@@ -113,6 +112,72 @@ app.post("/pendant-drop", upload.single("image"), (req, res) => {
         res.json({ message: "Execution Completed" });
       });
     });
+  });
+});
+
+app.post("/pendant-drop-video", upload.single("video"), (req, res) => {
+  console.log("Pendant Drop (Video) entered");
+
+  const tempPath = req.file.path;
+  const targetPath =
+    "c:/Users/Prem/OneDrive - IIT Delhi/Desktop/GitHub/S.U.R.A.-2024/python/video_final.mp4";
+
+  const density = req.body.density;
+
+  if (!density) {
+    console.error("Density is missing");
+    return res.status(400).json({ message: "Missing required input" });
+  }
+
+  // Step 1: Save the video
+  fs.rename(tempPath, targetPath, (err) => {
+    if (err) {
+      console.error("Error saving image:", err);
+      return res.status(500).json({ message: "Failed to save image." });
+    }
+    console.log("Image uploaded successfully");
+    console.log("Starting the python script");
+    // Step 2: Write density and needle diameter to input_pendant.txt
+    const inputContent = `${density}`;
+    fs.writeFile("input_pendant.txt", inputContent, (err) => {
+      if (err) {
+        console.error("Error writing input file:", err);
+        return res.status(500).json({ message: "Failed to write input file." });
+      }
+      console.log("Input file created successfully");
+
+      // Step 3: Execute the Python script
+      const pythonProcess = spawn("C://Python312//python.exe", [
+        "video_pendant_drop.py",
+      ]);
+
+      pythonProcess.on("error", (error) => {
+        console.error("Error starting Python script:", error);
+        return res.status(500).json({ output: "Error running Python script." });
+      });
+
+      pythonProcess.on("close", (code) => {
+        if (code !== 0) {
+          console.error(`Python script exited with code ${code}`);
+          return res
+            .status(500)
+            .json({ output: `Python script failed with code ${code}.` });
+        }
+
+        console.log("Python script completed successfully");
+        res.json({ message: "Execution Completed" });
+      });
+    });
+  });
+});
+
+app.get("/download-results-pendant", (req, res) => {
+  const csvFilePath = "Surface_Tension_data.csv";
+  res.download(csvFilePath, "results.csv", (err) => {
+    if (err) {
+      console.error("Error serving the file:", err);
+      res.status(500).send("Error serving the file.");
+    }
   });
 });
 
@@ -167,7 +232,7 @@ app.post("/hysteresis-analysis", upload.single("video"), (req, res) => {
   });
 });
 
-app.get("/download-results", (req, res) => {
+app.get("/download-results-hysteresis", (req, res) => {
   const csvFilePath = "contact_angle_data.csv";
   res.download(csvFilePath, "results.csv", (err) => {
     if (err) {

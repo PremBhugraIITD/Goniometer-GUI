@@ -9,13 +9,11 @@ import "./Home.css";
 const Home = () => {
   const [activeResult, setActiveResult] = useState(null);
   const [density, setDensity] = useState("");
-  const [needleDiameter, setNeedleDiameter] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [csvError, setCSVError] = useState(true);
 
-  const handleDensityAndDiameterSubmit = (newDensity, newNeedleDiameter) => {
+  const handleDensitySubmit = (newDensity) => {
     setDensity(newDensity);
-    setNeedleDiameter(newNeedleDiameter);
   };
 
   const handleSelection = (selection) => {
@@ -35,13 +33,12 @@ const Home = () => {
       <VideoSection
         activeResult={activeResult}
         density={density}
-        needleDiameter={needleDiameter}
         onProcessingChange={handleProcessingChange}
         onCSVError={handleCSVError}
       />
       <ControllerSection
         onSelect={handleSelection}
-        onDensityAndDiameterSubmit={handleDensityAndDiameterSubmit}
+        onDensitySubmit={handleDensitySubmit}
       />
       <ResultsSection
         activeResult={activeResult}

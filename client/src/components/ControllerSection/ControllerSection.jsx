@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./ControllerSection.css";
 
-const ControllerSection = ({ onSelect, onDensityAndDiameterSubmit }) => {
+const ControllerSection = ({ onSelect, onDensitySubmit }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [density, setDensity] = useState("");
-  const [needleDiameter, setNeedleDiameter] = useState("");
 
   const handleSubmit = () => {
-    if (onDensityAndDiameterSubmit) {
-      onDensityAndDiameterSubmit(density, needleDiameter);
+    if (onDensitySubmit) {
+      onDensitySubmit(density);
     }
   };
 
@@ -31,27 +30,21 @@ const ControllerSection = ({ onSelect, onDensityAndDiameterSubmit }) => {
             Select an orientation
           </option>
           <option value="hysteresis">Hysteresis</option>
-          <option value="pendant-drop">Pendant Drop</option>
+          <option value="pendant-drop-image">Pendant Drop (Image)</option>
+          <option value="pendant-drop-video">Pendant Drop (Video)</option>
           <option value="sessile-drop">Sessile Drop</option>
           <option value="calibration">Calibration</option>
         </select>
       </div>
 
-      {selectedOption === "pendant-drop" && (
+      {(selectedOption === "pendant-drop-image" ||
+        selectedOption === "pendant-drop-video") && (
         <div className="input-fields">
           <input
             type="text"
             placeholder="Density"
             value={density}
             onChange={(e) => setDensity(e.target.value)}
-            required
-            className="input-field"
-          />
-          <input
-            type="text"
-            placeholder="Needle Diameter"
-            value={needleDiameter}
-            onChange={(e) => setNeedleDiameter(e.target.value)}
             required
             className="input-field"
           />

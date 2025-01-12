@@ -1,1 +1,1 @@
-Corrected diameter of the needle after calibration: 0.0010650310606357665 m
+Corrected diameter of the needle after calibration: 0.0010103988135867251 m

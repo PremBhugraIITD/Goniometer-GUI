@@ -5,7 +5,6 @@ import "./VideoSection.css";
 const VideoSection = ({
   activeResult,
   density,
-  needleDiameter,
   onProcessingChange,
   onCSVError,
 }) => {
@@ -64,15 +63,28 @@ const VideoSection = ({
         try {
           setIsProcessing(true);
           onProcessingChange(true);
-          console.log("Running Hysteresis analysis");
-          const uploadResponse = await axios.post(
-            "http://localhost:3000/hysteresis-analysis",
-            formData,
-            {
-              headers: { "Content-Type": "multipart/form-data" },
-            }
-          );
-          console.log("Hysteresis analysis exited");
+          if (activeResult === "hysteresis") {
+            console.log("Running Hysteresis analysis");
+            const uploadResponse = await axios.post(
+              "http://localhost:3000/hysteresis-analysis",
+              formData,
+              {
+                headers: { "Content-Type": "multipart/form-data" },
+              }
+            );
+            console.log("Hysteresis analysis exited");
+          } else if (activeResult === "pendant-drop-video") {
+            formData.append("density", density);
+            console.log("Running Pendant Drop (Video) analysis");
+            const uploadResponse = await axios.post(
+              "http://localhost:3000/pendant-drop-video",
+              formData,
+              {
+                headers: { "Content-Type": "multipart/form-data" },
+              }
+            );
+            console.log("Pendant drop (video) analysis exited");
+          }
           onCSVError(false);
           //   console.log(new Date().toLocaleString());
         } catch (error) {
@@ -119,13 +131,16 @@ const VideoSection = ({
                 headers: { "Content-Type": "multipart/form-data" },
               });
               console.log("Sessile Drop exited");
-            } else if (activeResult === "pendant-drop") {
+            } else if (activeResult === "pendant-drop-image") {
               formData.append("density", density);
-              formData.append("needleDiameter", needleDiameter);
               console.log("Running Pendant Drop");
-              await axios.post("http://localhost:3000/pendant-drop", formData, {
-                headers: { "Content-Type": "multipart/form-data" },
-              });
+              await axios.post(
+                "http://localhost:3000/pendant-drop-image",
+                formData,
+                {
+                  headers: { "Content-Type": "multipart/form-data" },
+                }
+              );
               console.log("Pendant Drop exited");
             } else if (activeResult === "calibration") {
               console.log("Running Calibration");
@@ -159,7 +174,7 @@ const VideoSection = ({
             {isProcessing ? "Processing..." : "Capture Screenshot"}
           </button>
         )}
-        {activeResult === "pendant-drop" && (
+        {activeResult === "pendant-drop-image" && (
           <button
             onClick={takeScreenshot}
             className="screenshot-button"
@@ -167,6 +182,27 @@ const VideoSection = ({
           >
             {isProcessing ? "Processing..." : "Capture Screenshot"}
           </button>
+        )}
+        {activeResult === "pendant-drop-video" && (
+          <>
+            {!isRecording ? (
+              <button
+                onClick={startRecording}
+                className="capture-video-button"
+                disabled={isProcessing}
+              >
+                Start Recording
+              </button>
+            ) : (
+              <button
+                onClick={stopRecording}
+                className="capture-video-button"
+                disabled={isProcessing}
+              >
+                Stop Recording
+              </button>
+            )}
+          </>
         )}
         {activeResult === "calibration" && (
           <button

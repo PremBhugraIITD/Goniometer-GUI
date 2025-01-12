@@ -9,7 +9,11 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
   const [calibrationOutput, setCalibrationOutput] = useState("");
 
   const downloadCSV = () => {
-    window.location.href = "http://localhost:3000/download-results";
+    window.location.href = "http://localhost:3000/download-results-hysteresis";
+  };
+
+  const downloadCSV2 = () => {
+    window.location.href = "http://localhost:3000/download-results-pendant";
   };
 
   useEffect(() => {
@@ -30,7 +34,7 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
       return () => {
         eventSource.close();
       };
-    } else if (activeResult === "pendant-drop") {
+    } else if (activeResult === "pendant-drop-image") {
       const eventSource = new EventSource(
         "http://localhost:3000/pendant-drop-stream"
       );
@@ -106,13 +110,23 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
               </div>
             )}
           </div>
-        ) : activeResult === "pendant-drop" ? (
-          <div className="results-area" id="pendant-drop-analysis">
+        ) : activeResult === "pendant-drop-image" ? (
+          <div className="results-area" id="pendant-drop-image-analysis">
             {console.log(pendantDropOutput.split(/\\r\\n/))}
             {pendantDropOutput.split(/\\r\\n/).map((line, index) => {
               return <p key={index}>{line}</p>;
             })}
           </div>
+        ) : activeResult === "pendant-drop-video" ? (
+          !csvError && !isProcessing ? (
+            <div className="results-area" id="pendant-drop-image-analysis">
+              <div className="results-area">
+                <button onClick={downloadCSV2} className="download-button">
+                  Download CSV
+                </button>
+              </div>
+            </div>
+          ) : null
         ) : activeResult === "calibration" ? (
           <div className="results-area" id="calibration">
             {console.log(calibrationOutput.split(/\\r\\n/))}

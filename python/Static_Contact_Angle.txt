@@ -1,3 +1,5 @@
 Sessile Drop Analysis started...
 Cropping confirmed.
-Cropping region must have a non-zero area.
+Left Contact Angle: 107.45 degrees
+Right Contact Angle: 133.57 degrees
+Average Contact Angle: 120.51 degrees
