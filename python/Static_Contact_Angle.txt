@@ -1,5 +1,1 @@
-Sessile Drop Analysis started...
-Cropping confirmed.
-Left Contact Angle: 107.45 degrees
-Right Contact Angle: 133.57 degrees
-Average Contact Angle: 120.51 degrees
+Connection to phone not established

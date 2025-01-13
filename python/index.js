@@ -70,6 +70,9 @@ app.post("/pendant-drop-image", upload.single("image"), (req, res) => {
 
   if (!density) {
     console.error("Density is missing");
+    fs.writeFile("Surface_Tension.txt", "Density is missing", (err) => {
+      console.log("Error Occurred");
+    });
     return res.status(400).json({ message: "Missing required input" });
   }
 
@@ -387,6 +390,13 @@ app.post("/run-scrcpy", (req, res) => {
       );
       fs.writeFile(
         "Contact_Angle_Hysteresis.txt",
+        "Connection to phone not established",
+        (err) => {
+          console.log("Error Occurred");
+        }
+      );
+      fs.writeFile(
+        "Calibration_result.txt",
         "Connection to phone not established",
         (err) => {
           console.log("Error Occurred");

@@ -1,6 +1,4 @@
 Pendant Drop Analysis started...
 Cropping confirmed.
-Surface tension calculated successfully.
-Maximum diameter of the drop (d_e): 2.8374136270586017 mm
-Diameter at the lowest end (d_s): 1.9045570556988711 mm
-Surface tension of the liquid: 74.27537341786439 mN/m
+Cropping region must have a non-zero area.
+Error in preprocessing image: Cropping region must have a non-zero area.

@@ -4,18 +4,31 @@ import "./InputSection.css";
 const InputSection = () => {
   return (
     <div className="input-container">
-      <h2>Goniometer Input</h2>
-      <form>
-        <label id="input1" htmlFor="input1">
-          Input 1
-        </label>
-        <input placeholder="Input 1" required />
-        <label id="input2" htmlFor="input2">
-          Input 2
-        </label>
-        <input placeholder="Input 2" required />
-        <button type="submit">Submit</button>
-      </form>
+      <h2>Features and Functionality</h2>
+      <div className="input-scroll">
+      <ul>
+        <li>
+          <h3>Contact Angle Measurement:</h3> Accurately measures the contact
+          angle to study surface wettability.
+        </li>
+        <li>
+          <h3>Surface Tension Calculation:</h3> This feature measures the
+          surface tension of fluids with precision.
+        </li>
+        <li>
+          <h3>Hysteresis Calculation:</h3> This function assesses the difference
+          between advancing and receding contact angles.
+        </li>
+        <li>
+          <h3>User-Friendly Interface:</h3> Designed with an intuitive layout
+          for ease of use.
+        </li>
+        <li>
+          <h3>Real-Time Data Display:</h3> Provides immediate visual feedback on
+          measurements.
+        </li>
+      </ul>
+      </div>
     </div>
   );
 };

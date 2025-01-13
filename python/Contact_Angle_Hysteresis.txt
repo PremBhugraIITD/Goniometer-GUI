@@ -1,604 +1,187 @@
 Hysteresis Analysis started...
-Cropping confirmed.
-Not enough points found above the baseline.
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-No contours found!
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
 Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
 Could not find enough intersection points with the baseline.
 The function returned None.
 Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
 Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
 Could not find enough intersection points with the baseline.
 The function returned None.
 Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
-The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
 Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
 The function returned None.
-Not enough points found above the baseline.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
 The function returned None.
 End of video stream or error in reading the video file.
-Advancing Contact Angle: 141.92423555093987
-Receding Contact Angle: 173.86467517827458
-Contact Angle Hysteresis: -31.94043962733471
+Advancing Contact Angle: 142.87637653839164
+Receding Contact Angle: 165.8884425951026
+Contact Angle Hysteresis: -23.01206605671095

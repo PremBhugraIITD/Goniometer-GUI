@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import download_icon from "../../assets/download_icon.svg";
 import "./ResultsSection.css";
 
@@ -7,6 +7,7 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
   const [pendantDropOutput, setPendantDropOutput] = useState("");
   const [hysteresisOutput, setHysteresisOutput] = useState("");
   const [calibrationOutput, setCalibrationOutput] = useState("");
+  const scrollRef = useRef(null);
 
   const downloadCSV = () => {
     window.location.href = "http://localhost:3000/download-results-hysteresis";
@@ -15,6 +16,17 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
   const downloadCSV2 = () => {
     window.location.href = "http://localhost:3000/download-results-pendant";
   };
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [
+    sessileDropOutput,
+    pendantDropOutput,
+    hysteresisOutput,
+    calibrationOutput,
+  ]);
 
   useEffect(() => {
     if (activeResult === "sessile-drop") {
@@ -85,7 +97,7 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
   return (
     <div className="results-container">
       <h2>Results</h2>
-      <div className="results-scroll">
+      <div className="results-scroll" ref={scrollRef}>
         {activeResult === "sessile-drop" ? (
           <div className="results-area" id="sessile-drop-analysis">
             {console.log(sessileDropOutput.split(/\\r\\n/))}
@@ -103,11 +115,9 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
                 })}
               </div>
             ) : (
-              <div className="results-area">
-                <button onClick={downloadCSV} className="download-button">
-                  Download CSV
-                </button>
-              </div>
+              <button onClick={downloadCSV} className="download-button">
+                Download CSV
+              </button>
             )}
           </div>
         ) : activeResult === "pendant-drop-image" ? (
@@ -120,11 +130,9 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
         ) : activeResult === "pendant-drop-video" ? (
           !csvError && !isProcessing ? (
             <div className="results-area" id="pendant-drop-image-analysis">
-              <div className="results-area">
-                <button onClick={downloadCSV2} className="download-button">
-                  Download CSV
-                </button>
-              </div>
+              <button onClick={downloadCSV2} className="download-button">
+                Download CSV
+              </button>
             </div>
           ) : null
         ) : activeResult === "calibration" ? (
@@ -135,7 +143,9 @@ const ResultsSection = ({ activeResult, isProcessing, csvError }) => {
             })}
           </div>
         ) : (
-          <p>Please select a controller option to see results.</p>
+          <div className="results-area">
+            <p>Please select a controller option to see results.</p>
+          </div>
         )}
       </div>
     </div>

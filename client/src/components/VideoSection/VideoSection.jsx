@@ -191,7 +191,7 @@ const VideoSection = ({
                 className="capture-video-button"
                 disabled={isProcessing}
               >
-                Start Recording
+                {isProcessing ? "Processing..." : "Start Recording"}
               </button>
             ) : (
               <button
@@ -221,7 +221,7 @@ const VideoSection = ({
                 className="capture-video-button"
                 disabled={isProcessing}
               >
-                Start Recording
+                {isProcessing ? "Processing..." : "Start Recording"}
               </button>
             ) : (
               <button
