@@ -132,6 +132,7 @@ def get_cropped_image(image):
 
         # Press 'c' to confirm the crop and break the loop
         elif key == ord("c") and len(ref_point) == 2:
+            cropping =True
             print("Cropping confirmed.")
             with open(file_path, "a") as file:
                 file.write("Cropping confirmed.\n")
@@ -613,8 +614,8 @@ def pendant_drop(O_n_d=1.0194*10**(-3), density=997):
 
 # image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_final.png"
 # image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_sample.png"
-image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\water.jpg"
-# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\chloroform.jpg"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\water.jpg"
+image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\chloroform.jpg"
 
 with open("input_pendant.txt", "r") as file:
         lines = file.readlines()

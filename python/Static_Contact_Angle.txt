@@ -1,1 +1,4 @@
-Connection to phone not established
+Sessile Drop Analysis started...
+No cropping done. Using the original image.
+Could not find sufficient intersection points with the baseline.
+Contact angle calculation failed.

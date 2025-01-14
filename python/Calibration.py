@@ -6,12 +6,166 @@ from scipy.interpolate import interp1d
 from pathlib import Path
 # from ADB_extractor import image_retrieval_from_phone
 from Thresholds import get_threshes
+ref_point = []
+cropping = False
 
 # File path to save the data
 file_path = "Calibration_result.txt"
 with open(file_path, "w") as file:
     file.write("Calibration started...\n")
+def crop_image(event, x, y, flags, param):
+    '''
+    Handles mouse events for cropping an image. Tracks the region selected by the user
+    using left mouse button events and dynamically updates the cropping area.
 
+    Args:
+        event: OpenCV mouse event (e.g., button press, movement, release).
+        x, y: Coordinates of the mouse pointer during the event.
+        flags: OpenCV flags for mouse event.
+        param: Clone of the image to allow real-time rectangle drawing.
+    '''
+    global ref_point, cropping
+
+    clone = param.copy()  # Copy the original image to draw the rectangle dynamically
+
+    if event == cv2.EVENT_LBUTTONDOWN:
+        ref_point = [(x, y)]
+        cropping = True
+
+    elif event == cv2.EVENT_MOUSEMOVE:
+        if cropping:
+            # Draw a rectangle in real-time as the user selects the ROI
+            current_point = (x, y)
+            top_left = (min(ref_point[0][0], current_point[0]), min(ref_point[0][1], current_point[1]))
+            bottom_right = (max(ref_point[0][0], current_point[0]), max(ref_point[0][1], current_point[1]))
+            cv2.rectangle(clone, top_left, bottom_right, (0, 0, 255), 2)  # Draw the rectangle in red
+            # Resize the window (width, height)
+            
+            # Move the window (x, y position on screen)
+            cv2.moveWindow("Crop Image", 0 , 0)
+            cv2.imshow("Crop Image", clone)
+
+    elif event == cv2.EVENT_LBUTTONUP:
+        ref_point.append((x, y))
+        cropping = False
+
+        if len(ref_point) != 2:
+            with open(file_path, "a") as file:
+                file.write("Invalid cropping points. Please select a valid ROI.\n")
+            raise ValueError("Invalid cropping points. Please select a valid ROI.")
+        
+        # Draw the final rectangle around the region of interest
+        top_left = (min(ref_point[0][0], x), min(ref_point[0][1], y))
+        bottom_right = (max(ref_point[0][0], x), max(ref_point[0][1], y))
+        cv2.rectangle(param, top_left, bottom_right, (0, 0, 255), 2)  # Draw the rectangle in red
+        # Resize the window (width, height)
+        
+        # Move the window (x, y position on screen)
+        cv2.moveWindow("Crop Image", 0 , 0)
+        cv2.imshow("Crop Image", param)
+# Function to resize the image to fit within the screen
+def resize_to_fit_screen(image, screen_width=1920, screen_height=1080):
+    """
+    Resizes the image to fit within the screen dimensions while maintaining the aspect ratio.
+
+    Args:
+        image: The input image to resize.
+        screen_width: Maximum width of the screen.
+        screen_height: Maximum height of the screen.
+
+    Returns:
+        Resized image and the scale factor.
+    """
+    h, w = image.shape[:2]
+    scale = min(screen_width / w, screen_height / h)
+    if scale < 1:  # Resize only if the image is larger than the screen
+        resized_image = cv2.resize(image, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
+        return resized_image, scale
+    return image, 1.0  # Return the original image if no resizing is needed
+
+# Function to allow the user to crop the image
+def get_cropped_image(image):
+    '''
+    Allows the user to interactively crop the input image using OpenCV.
+
+    Args:
+        image: Input image to be cropped.
+
+    Returns:
+        Cropped portion of the image or the original image if cropping is skipped.
+    '''
+    global ref_point
+    
+    if image is None:
+        with open(file_path, "a") as file:
+            file.write("Input image is None. Please provide a valid image.\n")
+        raise ValueError("Input image is None. Please provide a valid image.")
+    
+    # Resize the image to fit the screen
+    resized_image, scale = resize_to_fit_screen(image)
+
+    clone = resized_image.copy()
+
+    # Set up the window and set the mouse callback function for cropping
+    cv2.namedWindow("Crop Image")
+    # Move the window (x, y position on screen)
+    cv2.moveWindow("Crop Image", 0 , 0)
+    cv2.setMouseCallback("Crop Image", crop_image, param=clone)
+
+    # Display the image and wait for cropping
+    while True:
+        cv2.imshow("Crop Image", clone)
+        key = cv2.waitKey(1) & 0xFF
+
+        # Press 'r' to reset cropping
+        if key == ord("r"):
+            ref_point = []  # Clear previous ROI points
+            # clone = image.copy()  # Reset the clone to the original image
+            print("Reset cropping selection.")
+            with open(file_path, "a") as file:
+                file.write("Reset cropping selection.\n")
+
+        # Press 'c' to confirm the crop and break the loop
+        elif key == ord("c") and len(ref_point) == 2:
+            print("Cropping confirmed.")
+            cropping =True
+            with open(file_path, "a") as file:
+                file.write("Cropping confirmed.\n")
+            break
+
+        # Press 'n' to skip cropping
+        elif key == ord("n"):
+            cv2.destroyAllWindows()  # Close the window
+            return image  # Return the original image without cropping
+
+        # Check if the window is closed
+        if cv2.getWindowProperty("Crop Image", cv2.WND_PROP_VISIBLE) < 1:
+            print("Window closed.")
+            with open(file_path, "a") as file:
+                file.write("Window closed.\n")
+            cv2.destroyAllWindows()
+            return image  # Return the original image without cropping
+
+    # Close the cropping window after confirmation
+    cv2.destroyAllWindows()
+
+    # Crop the selected area
+    if len(ref_point) == 2:
+        x0, y0 = int(ref_point[0][0] / scale), int(ref_point[0][1] / scale)
+        x1, y1 = int(ref_point[1][0] / scale), int(ref_point[1][1] / scale)
+        # Get the coordinates in correct order
+        x0, x1 = min(x0, x1), max(x0, x1)
+        y0, y1 = min(y0, y1), max(y0, y1)
+        
+        if x0 == x1 or y0 == y1:
+            with open(file_path, "a") as file:
+                file.write("Cropping region must have a non-zero area.\n")
+            raise ValueError("Cropping region must have a non-zero area.")
+        
+        cropped_image = image[y0:y1, x0:x1]
+        return cropped_image
+    else:
+        return image
 def read_last_thresholds(file_path2='thresholds_log.txt'):
     """Reads the last logged thresholds from the file."""
     try:
@@ -52,11 +206,15 @@ def preprocess_image(image_path):
     '''
     try:
         image = cv2.imread(image_path)
-        get_threshes(image)
+        
         if image is None:
             with open(file_path, "a") as file:
                 file.write(f"Could not load image from path: {image_path}\n")
             raise FileNotFoundError(f"Could not load image from path: {image_path}")
+        global cropped_image
+        cropped_image = get_cropped_image(image)
+        image = cropped_image    
+        get_threshes(image)
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         blurred = cv2.GaussianBlur(gray, (5, 5), 0)
         lower_threshold, upper_threshold = read_last_thresholds()

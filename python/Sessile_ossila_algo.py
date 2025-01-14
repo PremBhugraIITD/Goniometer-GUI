@@ -513,8 +513,9 @@ def sessile_drop():
 # # image_path = r"C:\Users\91982\OneDrive\Pictures\Screenshots\Screenshot 2024-08-07 230147.png"
 
 # image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_final.png"
-# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_sample.png"
-image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\water.jpg"
+image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\image_sample.png"
+image_path =r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\temporary2.jpg"
+# image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\water.jpg"
 # image_path = r"C:\Users\Prem\OneDrive - IIT Delhi\Desktop\GitHub\S.U.R.A.-2024\python\chloroform.jpg"
 
 image = cv2.imread(image_path)

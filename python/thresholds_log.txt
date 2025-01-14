@@ -1,1 +1,1 @@
-Final Lower Threshold: 207, Final Upper Threshold: 75
+Final Lower Threshold: 12, Final Upper Threshold: 39
