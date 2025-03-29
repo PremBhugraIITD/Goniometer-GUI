@@ -1,1 +1,1182 @@
-Connection to phone not established
+Hysteresis Analysis started...
+Cropping confirmed.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+Could not find enough intersection points with the baseline.
+The function returned None.
+End of video stream or error in reading the video file.
+Failed to calculate the advancing contact angle. Ensure the needle method algorithm is correctly implemented and that the video provides clear boundary motion.

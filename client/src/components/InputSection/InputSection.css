@@ -23,6 +23,7 @@
   width: 90%;
   font-size: 3vw;
   border-bottom: 2px solid black;
+  margin-bottom: 2%;
 }
 
 .input-container .input-scroll {
@@ -55,4 +56,69 @@
   font-family: "Montserrat", serif;
   width: 90%;
   margin-left: 8%;
+}
+
+.input-container > .xyz-control {
+  height: 70%;
+  width: 90%;
+  display: flex;
+}
+
+.input-container > .xyz-control > .control {
+  width: 100%;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  font-size: 3vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.input-container > .xyz-control > .x {
+  border-top: solid 2px black;
+  border-left: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.input-container > .xyz-control > .y {
+  border-top: solid 2px black;
+  border-left: solid 2px black;
+  border-right: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.input-container > .xyz-control > .z {
+  border-top: solid 2px black;
+  border-right: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.input-container > .xyz-control > .control > p {
+  padding: 0;
+  margin: 0;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container > .xyz-control > .control > button {
+  font-size: 3vw;
+  background-color: rgba(0, 0, 0, 0.158);
+  border: none;
+  height: 20%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.input-container > .xyz-control > .control > button:active {
+  background-color: rgba(0, 0, 0, 0.01);
 }
