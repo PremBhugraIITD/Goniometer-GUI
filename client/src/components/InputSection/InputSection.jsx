@@ -39,11 +39,12 @@ const InputSection = () => {
     x: 0,
     y: 0,
     z: 0,
+    ext: 0,
   });
 
-  const request = (x, y, z) => {
+  const request = (x, y, z, ext) => {
     fetch(
-      `https://blynk.cloud/external/api/update?token=o8pzTsuTKKa8oQ6Hgu3srDppbpGx3edc&V0=G0%20X${x}%20Y${y}%20Z${z}%20F100`
+      `https://blynk.cloud/external/api/update?token=o8pzTsuTKKa8oQ6Hgu3srDppbpGx3edc&V0=G0%20X${x}%20Y${y}%20Z${z}%20F1000%20E${ext}`
     )
       .then((response) => {
         return response.json();
@@ -66,7 +67,7 @@ const InputSection = () => {
               setg_code((prevValue) => {
                 const updatedValue = {
                   ...prevValue,
-                  x: prevValue.x + 1,
+                  x: prevValue.x + 0.5,
                 };
                 request(updatedValue.x, updatedValue.y, updatedValue.z);
                 return updatedValue;
@@ -81,9 +82,14 @@ const InputSection = () => {
               setg_code((prevValue) => {
                 const updatedValue = {
                   ...prevValue,
-                  x: prevValue.x - 1,
+                  x: prevValue.x - 0.5,
                 };
-                request(updatedValue.x, updatedValue.y, updatedValue.z);
+                request(
+                  updatedValue.x,
+                  updatedValue.y,
+                  updatedValue.z,
+                  updatedValue.ext
+                );
                 return updatedValue;
               });
             }}
@@ -99,7 +105,12 @@ const InputSection = () => {
                   ...prevValue,
                   y: prevValue.y + 1,
                 };
-                request(updatedValue.x, updatedValue.y, updatedValue.z);
+                request(
+                  updatedValue.x,
+                  updatedValue.y,
+                  updatedValue.z,
+                  updatedValue.ext
+                );
                 return updatedValue;
               });
             }}
@@ -114,7 +125,12 @@ const InputSection = () => {
                   ...prevValue,
                   y: prevValue.y - 1,
                 };
-                request(updatedValue.x, updatedValue.y, updatedValue.z);
+                request(
+                  updatedValue.x,
+                  updatedValue.y,
+                  updatedValue.z,
+                  updatedValue.ext
+                );
                 return updatedValue;
               });
             }}
@@ -130,7 +146,12 @@ const InputSection = () => {
                   ...prevValue,
                   z: prevValue.z + 1,
                 };
-                request(updatedValue.x, updatedValue.y, updatedValue.z);
+                request(
+                  updatedValue.x,
+                  updatedValue.y,
+                  updatedValue.z,
+                  updatedValue.ext
+                );
                 return updatedValue;
               });
             }}
@@ -145,7 +166,53 @@ const InputSection = () => {
                   ...prevValue,
                   z: prevValue.z - 1,
                 };
-                request(updatedValue.x, updatedValue.y, updatedValue.z);
+                request(
+                  updatedValue.x,
+                  updatedValue.y,
+                  updatedValue.z,
+                  updatedValue.ext
+                );
+                return updatedValue;
+              });
+            }}
+          >
+            ▼
+          </button>
+        </div>
+        <div className="ext control">
+          <button
+            onClick={() => {
+              setg_code((prevValue) => {
+                const updatedValue = {
+                  ...prevValue,
+                  ext: prevValue.ext + 5,
+                };
+                request(
+                  updatedValue.x,
+                  updatedValue.y,
+                  updatedValue.z,
+                  updatedValue.ext
+                );
+                return updatedValue;
+              });
+            }}
+          >
+            ▲
+          </button>
+          <p>E: {g_code.ext}</p>
+          <button
+            onClick={() => {
+              setg_code((prevValue) => {
+                const updatedValue = {
+                  ...prevValue,
+                  ext: prevValue.ext - 5,
+                };
+                request(
+                  updatedValue.x,
+                  updatedValue.y,
+                  updatedValue.z,
+                  updatedValue.ext
+                );
                 return updatedValue;
               });
             }}

@@ -98,6 +98,12 @@
   border-bottom: solid 2px black;
 }
 
+.input-container > .xyz-control > .ext {
+  border-top: solid 2px black;
+  border-right: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
 .input-container > .xyz-control > .control > p {
   padding: 0;
   margin: 0;
